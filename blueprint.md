@@ -45,6 +45,10 @@ This section documents all the style, design, and features implemented in the ap
     *   A section below the hero to build immediate trust.
     *   Displays four key features in cards: "Licensed & Insured", "Expert Team", "On-Time Delivery", and "Quality Materials".
     *   Uses icons from `lucide-react` to visually represent each feature.
+*   **Complete Homepage:**
+    *   The homepage has been fully built out with all sections, including Services, About Us, Testimonials, and a Contact Form.
+    *   **Animations:** Subtle fade-in animations have been added to all sections for a more dynamic user experience.
+    *   **Testimonial Images:** Corrected image URLs and configured `next.config.mjs` to allow remote images, fixing a critical build error.
 
 ### 2.4. Dependencies
 *   **`lucide-react`:** Added for modern and clean icons.
@@ -55,3 +59,4 @@ The website has been successfully deployed using Firebase App Hosting.
 
 *   **Live URL:** [https://osti--osti-ff772.us-central1.hosted.app](https://osti--osti-ff772.us-central1.hosted.app)
 *   **Deployment Method:** Continuous deployment from the `main` branch of the `japaka876-boop/OSTI` GitHub repository. Any changes pushed to this branch will automatically trigger a new deployment.
+*   **Troubleshooting Note:** Experienced and resolved a traffic splitting issue where the deployment was stuck on an older build. Forcing a new deployment by updating this blueprint file should resolve the issue.
