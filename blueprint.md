@@ -49,13 +49,9 @@ This section documents all the style, design, and features implemented in the ap
 ### 2.4. Dependencies
 *   **`lucide-react`:** Added for modern and clean icons.
 
-## 3. Current Plan: Deploy to Firebase App Hosting
+## 3. Deployment
 
-The previous attempt to deploy using Firebase Hosting Classic failed because our application is a server-side rendered Next.js app. The correct approach is to use Firebase App Hosting.
+The website has been successfully deployed using Firebase App Hosting.
 
-**Steps:**
-1.  **Configure Firebase:** Ensure the project is correctly set up to communicate with Firebase. The `.idx/mcp.json` file has been updated with the necessary server configuration. (Completed)
-2.  **Initiate Deployment:** Start the Firebase App Hosting deployment process. This will involve the CLI guiding us through the setup.
-3.  **Follow CLI Prompts:** Answer the questions from the Firebase CLI, such as selecting the project, region, and repository settings.
-4.  **Deploy:** Let Firebase build and deploy the application.
-5.  **Verify:** Once deployed, provide the live URL to the user.
+*   **Live URL:** [https://osti--osti-ff772.us-central1.hosted.app](https://osti--osti-ff772.us-central1.hosted.app)
+*   **Deployment Method:** Continuous deployment from the `main` branch of the `japaka876-boop/OSTI` GitHub repository. Any changes pushed to this branch will automatically trigger a new deployment.
