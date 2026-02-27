@@ -1,6 +1,6 @@
 
 import Image from 'next/image';
-import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem } from 'lucide-react';
 
 const services = [
   {
@@ -31,24 +31,61 @@ const whyChooseUsFeatures = [
     'Serving Ocean Springs, Biloxi, Gulfport, and surrounding areas',
 ];
 
+const features = [
+  {
+    icon: <ShieldCheck className="h-12 w-12 text-accent-cyan" />,
+    title: 'Licensed & Insured',
+    description: 'Peace of mind with our fully licensed and insured services.',
+  },
+  {
+    icon: <Users className="h-12 w-12 text-accent-cyan" />,
+    title: 'Expert Team',
+    description: 'Our certified professionals are masters of their craft.',
+  },
+  {
+    icon: <Truck className="h-12 w-12 text-accent-cyan" />,
+    title: 'On-Time Delivery',
+    description: 'We respect your time and deliver on our promises.',
+  },
+  {
+    icon: <Gem className="h-12 w-12 text-accent-cyan" />,
+    title: 'Quality Materials',
+    description: 'Only the best materials for a long-lasting, beautiful pool.',
+  },
+];
+
 export default function HomePage() {
   return (
     <div className="bg-white text-dark-gray font-sans">
+      <header className="bg-primary-blue text-white py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 z-50 shadow-md">
+        <div className="font-heading text-2xl font-bold">
+          OSTI
+        </div>
+        <nav className="hidden md:flex items-center space-x-8">
+          <a href="#services" className="hover:text-accent-cyan transition-colors">Services</a>
+          <a href="#why-choose-us" className="hover:text-accent-cyan transition-colors">Why Us</a>
+          <a href="#contact" className="hover:text-accent-cyan transition-colors">Contact</a>
+        </nav>
+        <button className="bg-accent-cyan text-white font-bold py-2 px-6 rounded-full hover:bg-opacity-90 transition-all">
+          Get a Quote
+        </button>
+      </header>
+
       <main>
-        <section className="relative h-[70vh] flex items-center justify-center text-white overflow-hidden">
+        <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
           <div className="absolute inset-0">
             <Image 
-              src="/hero-background.jpg" 
+              src="https://images.unsplash.com/photo-1574526418298-5474a584323b?q=80&w=2070&auto=format&fit=crop" 
               alt="Building Your Personal Oasis" 
               layout="fill" 
               objectFit="cover" 
               className="brightness-50"
             />
-            <div className="absolute inset-0 bg-primary-blue/40"></div>
+            <div className="absolute inset-0 bg-primary-blue/50"></div>
           </div>
           <div className="relative z-10 text-center px-4 animate-fadeInUp">
-            <h1 className="text-5xl md:text-8xl font-heading font-extrabold tracking-tight">Building Your Personal Oasis</h1>
-            <p className="mt-6 text-lg md:text-2xl max-w-3xl mx-auto">Where luxury meets tranquility, we create the backyard of your dreams.</p>
+            <h1 className="text-6xl md:text-8xl font-heading font-extrabold tracking-tight">Building Your Personal Oasis</h1>
+            <p className="mt-6 text-xl md:text-2xl max-w-3xl mx-auto">Where luxury meets tranquility, we create the backyard of your dreams.</p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <button className="bg-accent-cyan text-white font-bold py-4 px-10 rounded-full flex items-center hover:bg-opacity-90 transition-all shadow-lg transform hover:scale-105">
                 Get a Free Estimate <ArrowRight className="ml-2 h-6 w-6" />
@@ -58,6 +95,20 @@ export default function HomePage() {
               </button>
             </div>
           </div>
+        </section>
+
+        <section className="py-20 bg-white">
+            <div className="container mx-auto px-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    {features.map((feature) => (
+                        <div key={feature.title} className="p-6">
+                            {feature.icon}
+                            <h3 className="text-xl font-bold mt-4 text-primary-blue">{feature.title}</h3>
+                            <p className="text-medium-gray mt-2">{feature.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </section>
 
         <section id="services" className="py-24 bg-light-gray">
@@ -107,6 +158,37 @@ export default function HomePage() {
             </div>
         </section>
       </main>
+
+      <footer id="contact" className="bg-dark-gray text-white py-16">
+        <div className="container mx-auto px-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div>
+                    <h3 className="font-heading text-2xl font-bold mb-4">OSTI</h3>
+                    <p className="text-medium-gray">Creating backyard oases in Ocean Springs, MS and beyond. Let us build your dream pool.</p>
+                </div>
+                <div>
+                    <h3 className="font-heading text-xl font-bold mb-4">Contact Us</h3>
+                    <ul className="space-y-2 text-medium-gray">
+                        <li className="flex items-center"><Phone className="h-5 w-5 mr-3 text-accent-cyan" /> (228) 555-0101</li>
+                        <li className="flex items-center"><Mail className="h-5 w-5 mr-3 text-accent-cyan" /> contact@ostipools.com</li>
+                        <li className="flex items-center">Ocean Springs, MS, USA</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 className="font-heading text-xl font-bold mb-4">Follow Us</h3>
+                    <div className="flex space-x-4">
+                        <a href="#" className="text-medium-gray hover:text-accent-cyan transition-colors"><Facebook className="h-6 w-6" /></a>
+                        <a href="#" className="text-medium-gray hover:text-accent-cyan transition-colors"><Twitter className="h-6 w-6" /></a>
+                        <a href="#" className="text-medium-gray hover:text-accent-cyan transition-colors"><Instagram className="h-6 w-6" /></a>
+                        <a href="#" className="text-medium-gray hover:text-accent-cyan transition-colors"><Linkedin className="h-6 w-6" /></a>
+                    </div>
+                </div>
+            </div>
+            <div className="mt-12 pt-8 border-t border-gray-700 text-center text-medium-gray text-sm">
+                <p>&copy; {new Date().getFullYear()} OSTI Pool Services. All Rights Reserved.</p>
+            </div>
+        </div>
+      </footer>
     </div>
   );
 }
