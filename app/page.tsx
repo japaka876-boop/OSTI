@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { CheckCircle, ShieldCheck, Users, Clock, Award, Droplet, Sun, Wrench, Star } from 'lucide-react';
 import { FadeIn } from './components/FadeIn';
@@ -50,22 +51,22 @@ const services = [
 
 const testimonials = [
     {
-        avatar: 'https://i.pravatar.cc/150?img=68',
-        name: 'Jessica L.',
+        avatar: "https://i.pravatar.cc/150?img=68",
+        name: "Jessica L.",
         rating: 5,
-        testimonial: 'Ocean Springs Tech transformed our backyard! The team was professional, and the result exceeded our wildest dreams. Our new pool is the talk of the neighborhood!'
+        testimonial: "Ocean Springs Tech transformed our backyard! The team was professional, and the result exceeded our wildest dreams. Our new pool is the talk of the neighborhood!"
     },
     {
-        avatar: 'https://i.pravatar.cc/150?img=75',
-        name: 'Mike & Sarah P.',
+        avatar: "https://i.pravatar.cc/150?img=75",
+        name: "Mike & Sarah P.",
         rating: 5,
-        testimonial: 'From the initial design to the final tile, the process was seamless. We couldn\'t be happier with the craftsmanship and attention to detail. Highly recommend!'
+        testimonial: "From the initial design to the final tile, the process was seamless. We couldn't be happier with the craftsmanship and attention to detail. Highly recommend!"
     },
     {
-        avatar: 'https://i.pravatar.cc/150?img=79',
-        name: 'Emily R.',
+        avatar: "https://i.pravatar.cc/150?img=79",
+        name: "Emily R.",
         rating: 5,
-        testimonial: 'The maintenance service is fantastic. Our pool has never looked better, and the team is always friendly and reliable. It\'s completely hassle-free.'
+        testimonial: "The maintenance service is fantastic. Our pool has never looked better, and the team is always friendly and reliable. It's completely hassle-free."
     }
 ];
 
@@ -166,7 +167,7 @@ export default function HomePage() {
                     {testimonials.map((testimonial, index) => (
                         <div key={index} className="bg-gray-50 p-8 rounded-lg shadow-md">
                             <Image src={testimonial.avatar} alt={testimonial.name} width={80} height={80} className="rounded-full mx-auto mb-4 border-4 border-accent-cyan" />
-                            <p className="text-gray-600 italic mb-4">\"{testimonial.testimonial}\"</p>
+                            <p className="text-gray-600 italic mb-4">&quot;{testimonial.testimonial}&quot;</p>
                             <div className="flex justify-center mb-2">
                                 {[...Array(testimonial.rating)].map((_, i) => (
                                     <Star key={i} className="h-5 w-5 text-yellow-500 fill-current" />
@@ -184,7 +185,7 @@ export default function HomePage() {
         <section className="py-20 bg-primary-blue text-white">
             <div className="container mx-auto px-4 text-center">
                 <h2 className="text-4xl font-extrabold mb-4">Ready to Start Your Pool Project?</h2>
-                <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Contact us today for a free, no-obligation consultation. Let\'s build the pool of your dreams together.</p>
+                <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Contact us today for a free, no-obligation consultation. Let&apos;s build the pool of your dreams together.</p>
                 <div className="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg text-left">
                     <form>
                         <div className="mb-4">
