@@ -50,19 +50,19 @@ const services = [
 
 const testimonials = [
     {
-        avatar: 'https://randomuser.me/api/portraits/women/68.jpg',
+        avatar: 'https://i.pravatar.cc/150?img=68',
         name: 'Jessica L.',
         rating: 5,
         testimonial: 'Ocean Springs Tech transformed our backyard! The team was professional, and the result exceeded our wildest dreams. Our new pool is the talk of the neighborhood!'
     },
     {
-        avatar: 'https://randomuser.me/api/portraits/men/75.jpg',
+        avatar: 'https://i.pravatar.cc/150?img=75',
         name: 'Mike & Sarah P.',
         rating: 5,
         testimonial: 'From the initial design to the final tile, the process was seamless. We couldn\'t be happier with the craftsmanship and attention to detail. Highly recommend!'
     },
     {
-        avatar: 'https://randomuser.me/api/portraits/women/79.jpg',
+        avatar: 'https://i.pravatar.cc/150?img=79',
         name: 'Emily R.',
         rating: 5,
         testimonial: 'The maintenance service is fantastic. Our pool has never looked better, and the team is always friendly and reliable. It\'s completely hassle-free.'
