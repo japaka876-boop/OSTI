@@ -8,10 +8,25 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      fontFamily: {
+        sans: ['var(--font-sans)', 'sans-serif'],
+        heading: ['var(--font-heading)', 'serif'],
+      },
+      colors: {
+        'primary-blue': '#0a2540',
+        'accent-cyan': '#00d4ff',
+        'light-gray': '#f7fafc',
+        'medium-gray': '#718096',
+        'dark-gray': '#1a202c',
+      },
+      animation: {
+        fadeInUp: 'fadeInUp 1s ease-out forwards',
+      },
+      keyframes: {
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
     },
   },
