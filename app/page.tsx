@@ -110,9 +110,9 @@ export default function HomePage() {
                 loop
                 muted
                 playsInline
-                className="absolute inset-0 w-full h-full object-cover brightness-50"
+                className="absolute inset-0 w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-primary-blue/50"></div>
+            <div className="absolute inset-0 bg-primary-blue/60"></div>
           </div>
           <div className="relative z-10 text-center px-4 animate-fadeInUp">
             <h1 className="text-6xl md:text-8xl font-heading font-extrabold tracking-tight">Building Your Personal Oasis</h1>
