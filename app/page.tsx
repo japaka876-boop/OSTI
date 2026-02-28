@@ -179,11 +179,11 @@ export default function HomePage() {
                             ))}
                         </ul>
                         <button className="mt-10 bg-accent-cyan text-white font-bold py-4 px-10 rounded-full hover:bg-opacity-90 transition-all shadow-lg transform hover:scale-105">
-                            More About Our Commitment
+                            Discover the OSTI Difference
                         </button>
                     </div>
                     <div className="relative w-full h-96 md:h-[600px] rounded-xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                         <Image src="https://images.unsplash.com/photo-1593442436579-23c8e45a054a?q=80&w=1974&auto=format&fit=crop" alt="Beautiful resort pool" layout="fill" objectFit="cover" />
+                         <Image src="https://images.unsplash.com/photo-1580201380797-12b1b39cbf07?q=80&w=1974&auto=format&fit=crop" alt="Stunning modern pool with luxurious amenities" layout="fill" objectFit="cover" />
                     </div>
                 </div>
             </div>
