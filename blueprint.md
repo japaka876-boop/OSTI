@@ -20,8 +20,12 @@ OSTI Pool Services is a premier provider of pool construction, renovation, and m
 ### 2.2. Header and Footer
 
 *   **Header:**
-    *   A clean and professional header with the company logo and a navigation menu.
-    *   The header will be sticky to ensure easy navigation.
+    *   A two-tiered header design for a professional and informative first impression.
+    *   **Top Bar:** A dark blue bar containing contact information (phone and email) and a "Licensed & Insured" notice.
+    *   **Main Header:** A white, sticky header containing:
+        *   A new, stylized logo with the text "Ocean Springs Tech Inc" and "Pool Construction & Maintenance".
+        *   An expanded navigation menu: Home, About, Services, Gallery, Blog, FAQ, Reviews, Contact.
+        *   A prominent "Get a Quote" button.
 *   **Footer:**
     *   A comprehensive footer with contact information, social media links, and a sitemap.
     *   The footer will be designed to be both informative and visually appealing.
@@ -46,11 +50,11 @@ OSTI Pool Services is a premier provider of pool construction, renovation, and m
 
 *   The `next.config.mjs` file has been configured to allow images from `images.unsplash.com`, ensuring that all images are displayed correctly.
 
-## 3. Current Task: Header, Footer, and "Hero Mamalón"
+## 3. Current Task: Implement Two-Tiered Header
 
-*   **Objective:** To create a visually stunning and professional website that will impress the client and secure the project.
+*   **Objective:** To replace the existing header with a more professional, two-tiered header that matches the provided design.
 *   **Tasks:**
-    1.  Create a `next.config.mjs` file to allow remote images from `images.unsplash.com`.
-    2.  Add a header with a logo and navigation menu.
-    3.  Add a footer with contact information and social media links.
-    4.  Update the hero section with a more impactful background image.
+    1.  Create the top bar with contact details.
+    2.  Design the new logo component.
+    3.  Update the navigation links.
+    4.  Integrate the new header into `app/page.tsx`.

@@ -57,18 +57,48 @@ const features = [
 export default function HomePage() {
   return (
     <div className="bg-white text-dark-gray font-sans">
-      <header className="bg-primary-blue text-white py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 z-50 shadow-md">
-        <div className="font-heading text-2xl font-bold">
-          OSTI
+      <header className="sticky top-0 z-50 shadow-lg">
+        <div className="bg-primary-blue text-white text-sm py-2">
+          <div className="container mx-auto px-6 flex justify-between items-center">
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                <Phone size={16} />
+                <span>(228) 555-2500</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail size={16} />
+                <span>info@oceanspringstech.com</span>
+              </div>
+            </div>
+            <div>
+              <span>Licensed & Insured | Serving Ocean Springs & Beyond</span>
+            </div>
+          </div>
         </div>
-        <nav className="hidden md:flex items-center space-x-8">
-          <a href="#services" className="hover:text-accent-cyan transition-colors">Services</a>
-          <a href="#why-choose-us" className="hover:text-accent-cyan transition-colors">Why Us</a>
-          <a href="#contact" className="hover:text-accent-cyan transition-colors">Contact</a>
-        </nav>
-        <button className="bg-accent-cyan text-white font-bold py-2 px-6 rounded-full hover:bg-opacity-90 transition-all">
-          Get a Quote
-        </button>
+
+        <div className="bg-white text-dark-gray py-4">
+            <div className="container mx-auto px-6 flex justify-between items-center">
+                <div className="bg-gradient-to-r from-cyan-400 to-sky-600 text-white p-3 rounded-lg shadow-md text-center w-52">
+                    <div className="font-bold text-xl leading-tight">Ocean Springs Tech Inc</div>
+                    <div className="text-xs tracking-wide">Pool Construction & Maintenance</div>
+                </div>
+
+                <nav className="hidden md:flex items-center space-x-5 font-medium">
+                    <a href="#" className="bg-primary-blue text-white px-4 py-2 rounded-md shadow-sm text-base">Home</a>
+                    <a href="#about" className="hover:text-accent-cyan transition-colors">About</a>
+                    <a href="#services" className="hover:text-accent-cyan transition-colors">Services</a>
+                    <a href="#gallery" className="hover:text-accent-cyan transition-colors">Gallery</a>
+                    <a href="#blog" className="hover:text-accent-cyan transition-colors">Blog</a>
+                    <a href="#faq" className="hover:text-accent-cyan transition-colors">FAQ</a>
+                    <a href="#reviews" className="hover:text-accent-cyan transition-colors">Reviews</a>
+                    <a href="#contact" className="hover:text-accent-cyan transition-colors">Contact</a>
+                </nav>
+
+                <button className="bg-accent-cyan text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-all shadow-md">
+                    Get a Quote
+                </button>
+            </div>
+        </div>
       </header>
 
       <main>
