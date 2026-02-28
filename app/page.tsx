@@ -102,30 +102,22 @@ export default function HomePage() {
       </header>
 
       <main>
-        <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
-            <div className="absolute inset-0 -z-10">
-                <Image
-                    src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop"
-                    alt="Luxurious resort pool at sunset"
-                    layout="fill"
-                    objectFit="cover"
-                    quality={100}
-                    priority
-                />
-                <div className="absolute inset-0 bg-primary-blue/60"></div>
+        <section
+          className="relative h-[600px] bg-cover bg-center text-white"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop')`,
+          }}
+        >
+          <div className="absolute inset-0 bg-black opacity-50"></div>
+          <div className="container mx-auto px-6 relative h-full flex flex-col justify-center items-center text-center">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight">Building Your Personal Oasis</h1>
+            <p className="mt-4 text-lg md:text-xl max-w-3xl">Where luxury meets tranquility, we create the backyard of your dreams.</p>
+            <div className="mt-8">
+              <a href="#contact" className="bg-accent-cyan text-white font-bold py-3 px-8 rounded-lg hover:bg-opacity-90 transition-all shadow-lg inline-flex items-center">
+                Get a Free Estimate <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
             </div>
-            <div className="relative z-10 text-center px-4 animate-fadeInUp">
-                <h1 className="text-6xl md:text-8xl font-heading font-extrabold tracking-tight">Building Your Personal Oasis</h1>
-                <p className="mt-6 text-xl md:text-2xl max-w-3xl mx-auto">Where luxury meets tranquility, we create the backyard of your dreams.</p>
-                <div className="mt-10 flex flex-wrap justify-center gap-4">
-                    <button className="bg-accent-cyan text-white font-bold py-4 px-10 rounded-full flex items-center hover:bg-opacity-90 transition-all shadow-lg transform hover:scale-105">
-                        Get a Free Estimate <ArrowRight className="ml-2 h-6 w-6" />
-                    </button>
-                    <button className="bg-white/20 text-white font-bold py-4 px-10 rounded-full backdrop-blur-md hover:bg-white/30 transition-all shadow-lg transform hover:scale-105">
-                        Explore Our Gallery
-                    </button>
-                </div>
-            </div>
+          </div>
         </section>
 
         <section className="py-20 bg-white">
