@@ -102,18 +102,11 @@ export default function HomePage() {
       </header>
 
       <main>
-        <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
-          <div className="absolute inset-0">
-             <video
-                src="https://videos.pexels.com/video-files/853821/853821-hd_1920_1080_25fps.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-primary-blue/50"></div>
-          </div>
+        <section 
+            className="relative h-screen flex items-center justify-center text-white overflow-hidden bg-cover bg-center"
+            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?q=80&w=2070&auto=format&fit=crop')" }}
+        >
+          <div className="absolute inset-0 bg-primary-blue/50"></div>
           <div className="relative z-10 text-center px-4 animate-fadeInUp">
             <h1 className="text-6xl md:text-8xl font-heading font-extrabold tracking-tight">Building Your Personal Oasis</h1>
             <p className="mt-6 text-xl md:text-2xl max-w-3xl mx-auto">Where luxury meets tranquility, we create the backyard of your dreams.</p>
