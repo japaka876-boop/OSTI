@@ -103,18 +103,16 @@ export default function HomePage() {
 
       <main>
         <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
-          <div className="absolute inset-0">
-             <video
-                src="https://videos.pexels.com/video-files/5895568/5895568-hd_1920_1080_24fps.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-primary-blue/60"></div>
-          </div>
-          <div className="relative z-10 text-center px-4 animate-fadeInUp">
+          <video
+              src="https://cdn.pixabay.com/video/2018/09/13/18224-284890696_large.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover -z-10"
+          />
+          <div className="absolute inset-0 bg-primary-blue/60 -z-10"></div>
+          <div className="relative text-center px-4 animate-fadeInUp">
             <h1 className="text-6xl md:text-8xl font-heading font-extrabold tracking-tight">Building Your Personal Oasis</h1>
             <p className="mt-6 text-xl md:text-2xl max-w-3xl mx-auto">Where luxury meets tranquility, we create the backyard of your dreams.</p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
