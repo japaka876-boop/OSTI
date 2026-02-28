@@ -1,6 +1,6 @@
 
 import Image from 'next/image';
-import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin } from 'lucide-react';
+import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem } from 'lucide-react';
 
 const services = [
   {
@@ -190,56 +190,33 @@ export default function HomePage() {
         </section>
       </main>
 
-      <footer id="contact" className="bg-dark-gray text-white pt-20 pb-10">
+      <footer id="contact" className="bg-dark-gray text-white py-16">
         <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-sm">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <div>
-                    <h3 className="font-heading text-2xl font-bold mb-4">Ocean Springs Tech Inc.</h3>
-                    <p className="text-medium-gray max-w-xs">Building the backyard oasis of your dreams, where luxury meets tranquility.</p>
-                    <div className="mt-6 flex space-x-4">
-                        <a href="#" aria-label="Facebook" className="text-medium-gray hover:text-accent-cyan transition-colors"><Facebook className="h-6 w-6" /></a>
-                        <a href="#" aria-label="Twitter" className="text-medium-gray hover:text-accent-cyan transition-colors"><Twitter className="h-6 w-6" /></a>
-                        <a href="#" aria-label="Instagram" className="text-medium-gray hover:text-accent-cyan transition-colors"><Instagram className="h-6 w-6" /></a>
-                        <a href="#" aria-label="LinkedIn" className="text-medium-gray hover:text-accent-cyan transition-colors"><Linkedin className="h-6 w-6" /></a>
+                    <h3 className="font-heading text-2xl font-bold mb-4">OSTI</h3>
+                    <p className="text-medium-gray">Creating backyard oases in Ocean Springs, MS and beyond. Let us build your dream pool.</p>
+                </div>
+                <div>
+                    <h3 className="font-heading text-xl font-bold mb-4">Contact Us</h3>
+                    <ul className="space-y-2 text-medium-gray">
+                        <li className="flex items-center"><Phone className="h-5 w-5 mr-3 text-accent-cyan" /> (228) 555-0101</li>
+                        <li className="flex items-center"><Mail className="h-5 w-5 mr-3 text-accent-cyan" /> contact@ostipools.com</li>
+                        <li className="flex items-center">Ocean Springs, MS, USA</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 className="font-heading text-xl font-bold mb-4">Follow Us</h3>
+                    <div className="flex space-x-4">
+                        <a href="#" className="text-medium-gray hover:text-accent-cyan transition-colors"><Facebook className="h-6 w-6" /></a>
+                        <a href="#" className="text-medium-gray hover:text-accent-cyan transition-colors"><Twitter className="h-6 w-6" /></a>
+                        <a href="#" className="text-medium-gray hover:text-accent-cyan transition-colors"><Instagram className="h-6 w-6" /></a>
+                        <a href="#" className="text-medium-gray hover:text-accent-cyan transition-colors"><Linkedin className="h-6 w-6" /></a>
                     </div>
                 </div>
-                <div>
-                    <h3 className="font-heading text-xl font-bold mb-4 tracking-wider">Sitemap</h3>
-                    <ul className="space-y-3">
-                        <li><a href="#" className="text-medium-gray hover:text-accent-cyan transition-colors">Home</a></li>
-                        <li><a href="#about" className="text-medium-gray hover:text-accent-cyan transition-colors">About Us</a></li>
-                        <li><a href="#services" className="text-medium-gray hover:text-accent-cyan transition-colors">Services</a></li>
-                        <li><a href="#gallery" className="text-medium-gray hover:text-accent-cyan transition-colors">Gallery</a></li>
-                        <li><a href="#contact" className="text-medium-gray hover:text-accent-cyan transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 className="font-heading text-xl font-bold mb-4 tracking-wider">Contact Us</h3>
-                    <ul className="space-y-3">
-                        <li className="flex items-start">
-                            <MapPin className="h-5 w-5 mr-3 text-accent-cyan flex-shrink-0 mt-1" />
-                            <span className="text-medium-gray">123 Poolside Drive,<br />Ocean Springs, MS 39564</span>
-                        </li>
-                        <li className="flex items-center">
-                            <Phone className="h-5 w-5 mr-3 text-accent-cyan flex-shrink-0" />
-                            <a href="tel:2285552500" className="text-medium-gray hover:text-accent-cyan transition-colors">(228) 555-2500</a>
-                        </li>
-                        <li className="flex items-center">
-                            <Mail className="h-5 w-5 mr-3 text-accent-cyan flex-shrink-0" />
-                            <a href="mailto:info@oceanspringstech.com" className="text-medium-gray hover:text-accent-cyan transition-colors">info@oceanspringstech.com</a>
-                        </li>
-                    </ul>
-                </div>
-                 <div>
-                    <h3 className="font-heading text-xl font-bold mb-4 tracking-wider">Get a Free Quote</h3>
-                    <p className="text-medium-gray mb-4">Ready to start your project? We offer free, no-obligation estimates.</p>
-                    <button className="bg-accent-cyan text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-all shadow-md w-full">
-                        Request Estimate
-                    </button>
-                </div>
             </div>
-            <div className="mt-16 pt-8 border-t border-gray-700 text-center text-medium-gray text-xs">
-                <p>&copy; {new Date().getFullYear()} Ocean Springs Tech Inc. All Rights Reserved. Site by OSTI-AI.</p>
+            <div className="mt-12 pt-8 border-t border-gray-700 text-center text-medium-gray text-sm">
+                <p>&copy; {new Date().getFullYear()} OSTI Pool Services. All Rights Reserved.</p>
             </div>
         </div>
       </footer>
