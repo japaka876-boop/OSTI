@@ -105,7 +105,7 @@ export default function HomePage() {
         <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
           <div className="absolute inset-0">
              <video
-                src="https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4"
+                src="https://videos.pexels.com/video-files/5895568/5895568-hd_1920_1080_24fps.mp4"
                 autoPlay
                 loop
                 muted
