@@ -183,7 +183,7 @@ export default function HomePage() {
                         </button>
                     </div>
                     <div className="relative w-full h-96 md:h-[600px] rounded-xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                         <Image src="https://images.unsplash.com/photo-1580201380797-12b1b39cbf07?q=80&w=1974&auto=format&fit=crop" alt="Stunning modern pool with luxurious amenities" layout="fill" objectFit="cover" />
+                         <Image src="https://images.unsplash.com/photo-1580201380797-12b1b39cbf07?q=80&w=1974&auto=format=fit=crop" alt="Stunning modern pool with luxurious amenities" layout="fill" objectFit="cover" />
                     </div>
                 </div>
             </div>
