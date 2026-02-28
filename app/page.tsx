@@ -104,12 +104,13 @@ export default function HomePage() {
       <main>
         <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
           <div className="absolute inset-0">
-            <Image 
-              src="https://images.unsplash.com/photo-1574526418298-5474a584323b?q=80&w=2070&auto=format&fit=crop" 
-              alt="Building Your Personal Oasis" 
-              layout="fill" 
-              objectFit="cover" 
-              className="brightness-50"
+             <video
+                src="https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover brightness-50"
             />
             <div className="absolute inset-0 bg-primary-blue/50"></div>
           </div>
