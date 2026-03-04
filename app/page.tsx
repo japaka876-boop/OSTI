@@ -1,6 +1,7 @@
 
 import Image from 'next/image';
 import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin } from 'lucide-react';
+import Logo from '@/components/Logo'; // Import the new Logo component
 
 const services = [
   {
@@ -79,7 +80,7 @@ export default function HomePage() {
         <div className="bg-white text-dark-gray py-4">
             <div className="container mx-auto px-6 flex justify-between items-center">
                 <div className="flex items-center gap-4">
-                    <div className="font-bold text-xl leading-tight text-primary-blue">Ocean Springs Tech Inc</div>
+                    <Logo />
                 </div>
 
                 <nav className="hidden md:flex items-center space-x-5 font-medium">
