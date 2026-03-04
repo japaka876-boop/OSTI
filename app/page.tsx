@@ -79,7 +79,10 @@ export default function HomePage() {
         <div className="bg-white text-dark-gray py-4">
             <div className="container mx-auto px-6 flex justify-between items-center">
                 <div className="flex items-center gap-4">
-                    <div className="font-bold text-xl leading-tight text-primary-blue">Ocean Springs Tech Inc</div>
+                    <div>
+                        <div className="text-2xl font-bold text-primary-blue">Ocean Springs Tech Inc</div>
+                        <div className="text-sm text-medium-gray">Pool Construction & Maintenance</div>
+                    </div>
                 </div>
 
                 <nav className="hidden md:flex items-center space-x-5 font-medium">
