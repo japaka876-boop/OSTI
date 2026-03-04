@@ -78,7 +78,13 @@ export default function HomePage() {
 
         <div className="bg-white text-dark-gray py-4">
             <div className="container mx-auto px-6 flex justify-between items-center">
-                <Image src="/logo.png" alt="Ocean Springs Tech Inc Logo" width={150} height={150} />
+                <div className="flex items-center gap-4">
+                    <Image src="/logo.png" alt="Ocean Springs Tech Inc Logo" width={100} height={100} />
+                    <div>
+                        <div className="font-bold text-xl leading-tight text-primary-blue">Ocean Springs Tech Inc</div>
+                        <div className="text-xs tracking-wide text-medium-gray">Pool Construction & Maintenance</div>
+                    </div>
+                </div>
 
                 <nav className="hidden md:flex items-center space-x-5 font-medium">
                     <a href="#" className="bg-primary-blue text-white px-4 py-2 rounded-md shadow-sm text-base">Home</a>
