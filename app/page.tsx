@@ -79,7 +79,7 @@ export default function HomePage() {
         <div className="bg-white text-dark-gray py-4">
             <div className="container mx-auto px-6 flex justify-between items-center">
                 <div className="flex items-center gap-4">
-                    <div className="font-bold text-xl leading-tight text-primary-blue">Ocean Springs Tech Inc</div>
+                    <Image src="/logo.svg" alt="Ocean Springs Tech Inc Logo" width={150} height={50} />
                 </div>
 
                 <nav className="hidden md:flex items-center space-x-5 font-medium">
