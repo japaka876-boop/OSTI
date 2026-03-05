@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin } from 'lucide-react';
 import Logo from '@/components/Logo'; // Import the new Logo component
 
+// Forcing a redeploy to fix image issues
 const services = [
   {
     image: "https://images.unsplash.com/photo-1560251175-6835a4d33b8a?q=80&w=2070&auto=format&fit=crop",
