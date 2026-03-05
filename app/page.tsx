@@ -141,8 +141,14 @@ export default function HomePage() {
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10">
               {services.map((service) => (
                 <div key={service.title} className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 group">
-                    <div className="w-full h-64 overflow-hidden">
-                        <Image src={service.image} alt={service.title} width={400} height={256} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <div className="relative w-full h-64 overflow-hidden">
+                        <Image 
+                            src={service.image} 
+                            alt={service.title} 
+                            fill 
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            className="object-cover group-hover:scale-105 transition-transform duration-300" 
+                        />
                     </div>
                   <div className="p-8 text-left">
                     <h3 className="text-2xl font-heading font-bold mb-3 text-primary-blue">{service.title}</h3>
@@ -175,7 +181,13 @@ export default function HomePage() {
                         </button>
                     </div>
                     <div className="relative w-full h-96 md:h-[600px] rounded-xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                         <Image src="https://images.unsplash.com/photo-1580201380797-12b1b39cbf07?q=80&w=1974&auto=format=fit=crop" alt="Stunning modern pool with luxurious amenities" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+                         <Image 
+                            src="https://images.unsplash.com/photo-1580201380797-12b1b39cbf07?q=80&w=1974&auto=format=fit=crop" 
+                            alt="Stunning modern pool with luxurious amenities" 
+                            fill 
+                            sizes="(max-width: 768px) 100vw, 50vw" 
+                            className="object-cover" 
+                        />
                     </div>
                 </div>
             </div>
