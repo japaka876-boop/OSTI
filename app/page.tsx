@@ -3,20 +3,20 @@ import Image from 'next/image';
 import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin } from 'lucide-react';
 import Logo from '@/components/Logo'; // Import the new Logo component
 
-// Forcing a cache purge with this comment
+// Replacing all image links with user-provided, verified URLs
 const services = [
   {
-    image: "https://images.unsplash.com/photo-1560251175-6835a4d33b8a?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=2070&auto=format&fit=crop",
     title: 'Pool Construction',
     description: 'Custom-designed pools built to your specifications and lifestyle.',
   },
   {
-    image: "https://images.unsplash.com/photo-1615585233157-1c4b823e5927?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1562673005-7693bd6d6e54?q=80&w=2070&auto=format&fit=crop",
     title: 'Pool Renovation',
     description: 'Transform your existing pool into a modern oasis of relaxation.',
   },
   {
-    image: "https://images.unsplash.com/photo-1606041974734-03a4c1e0b5c1?q=80&w=1974&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2070&auto=format&fit=crop",
     title: 'Pool Maintenance',
     description: 'Keep your pool crystal clear and ready for enjoyment year-round.',
   },
@@ -183,7 +183,7 @@ export default function HomePage() {
                     </div>
                     <div className="relative w-full h-96 md:h-[600px] rounded-xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
                          <Image 
-                            src="https://images.unsplash.com/photo-1580201380797-12b1b39cbf07?q=80&w=1974&auto=format=fit=crop" 
+                            src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop" 
                             alt="Stunning modern pool with luxurious amenities" 
                             fill 
                             sizes="(max-width: 768px) 100vw, 50vw" 
