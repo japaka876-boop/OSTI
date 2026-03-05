@@ -141,8 +141,8 @@ export default function HomePage() {
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10">
               {services.map((service) => (
                 <div key={service.title} className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 group">
-                    <div className="relative h-64 w-full">
-                        <Image src={service.image} alt={service.title} layout="fill" objectFit="cover" className="group-hover:scale-105 transition-transform duration-300" />
+                    <div className="w-full h-64 overflow-hidden">
+                        <Image src={service.image} alt={service.title} width={400} height={256} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                     </div>
                   <div className="p-8 text-left">
                     <h3 className="text-2xl font-heading font-bold mb-3 text-primary-blue">{service.title}</h3>
