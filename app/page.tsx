@@ -80,8 +80,15 @@ export default function HomePage() {
 
         <div className="bg-white text-dark-gray py-4">
             <div className="container mx-auto px-6 flex justify-between items-center">
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
                     <Logo />
+                    <Image
+                      src="/logo-mascota.avif"
+                      alt="Mascota de Ocean Springs Tech"
+                      width={70}
+                      height={70}
+                      priority
+                    />
                 </div>
 
                 <nav className="hidden md:flex items-center space-x-5 font-medium">
