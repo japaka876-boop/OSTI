@@ -71,3 +71,16 @@ De acuerdo con el sitio en vivo (`oceanspringstech.com`), el nuevo contenido se 
 - **Servicios Principales a Mostrar:** Maintenance Services, New construction, Repairs and Warranty, Remodels, Lighting.
 - **Puntos de Venta (USP):** "Expert Technicians", "Complete Projects" y disponibilidad de "Financing Now!".
 - **Tono SEO:** Focalizado en ser "la compañía más confiable del Coachella Valley" para embellecer espacios exteriores (Outdoor Living Spaces).
+
+## 5. Phase 3: Premium Interactive UI Elements (Modals & Galleries)
+
+El proyecto ha sido escalado con características de diseño UI/UX de nivel corporativo para maximizar las tasas de conversión (CRO) y mejorar el tiempo en pantalla.
+
+*   **Status:** **[COMPLETED]**
+*   **Implementation Details:**
+    *   **Premium Estimate Modal (Split-Layout):** Reemplazo del formulario flotante básico por un modal de pantalla completa "High-End". Lado izquierdo: formulario de captura de prospectos impulsado por psicología de colores (azul y cyan). Lado derecho: panel de "Why Choose Us" con badges de confianza (Licensed/Insured, 5-Star Reviews).
+    *   **Financing Solutions Modal:** Creación de una experiencia "Dream Now, Pay Later" con un diseño simétrico (`50/50`) a pantalla completa, evitando barras de desplazamiento en escritorio. Contiene información detallada de 4 prestamistas con llamadas a la acción directas para pre-calificación.
+    *   **Interactive Portfolio Gallery (Album -> Grid -> Carousel):** Desarrollo de un portafolio fotográfico altamente interactivo animado completamente con `Framer Motion`. 
+        *   Nivel 1: Tarjetas grandes simulando "Álbumes" o directorios por categoría.
+        *   Nivel 2: Grilla *Masonry* elegante de las imágenes del álbum seleccionado con efectos Hover Premium (Zoom y botón expandir).
+        *   Nivel 3: **Lightbox**, pantalla completa inmersiva tipo carrusel para navegar imagen a imagen.
