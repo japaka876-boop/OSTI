@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin, Star, CreditCard, Menu, X, CheckCircle, CheckCircle2, Maximize2 } from 'lucide-react';
+import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin, Star, CreditCard, Menu, X, CheckCircle, CheckCircle2, Maximize2, Folder, ChevronLeft, ChevronRight } from 'lucide-react';
 import Logo from '@/components/Logo';
 
 // ... (skipping unchanged code to save space) wait, the tool expects EXACT replacement string.
@@ -124,8 +124,11 @@ export default function HomePage() {
   const [isEstimateModalOpen, setIsEstimateModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<string | null>(null);
   const [isPortfolioModalOpen, setIsPortfolioModalOpen] = useState(false);
-  const [portfolioCategory, setPortfolioCategory] = useState('All');
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [activeAlbum, setActiveAlbum] = useState<string | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+
+  // Derived album items for lightbox
+  const currentAlbumItems = activeAlbum ? portfolioItems.filter(item => item.category === activeAlbum) : portfolioItems;
 
   useEffect(() => {
     const textInterval = setInterval(() => {
@@ -593,97 +596,170 @@ export default function HomePage() {
                 </button>
               </div>
 
-              {/* Filters */}
-              <div className="flex-shrink-0 p-6 flex flex-wrap gap-3 justify-center border-b border-white/5 bg-black/20">
-                 {portfolioCategories.map(cat => (
-                   <button
-                     key={cat}
-                     onClick={() => setPortfolioCategory(cat)}
-                     className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 ${portfolioCategory === cat ? 'bg-accent-cyan text-[#0a2540] shadow-[0_0_15px_rgba(0,212,255,0.6)]' : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'}`}
-                   >
-                     {cat}
-                   </button>
-                 ))}
-              </div>
-
-              {/* Masonry Grid */}
-              <div className="flex-grow overflow-y-auto p-6 md:p-10 custom-scrollbar">
-                 <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <AnimatePresence>
-                       {portfolioItems.filter(item => portfolioCategory === 'All' || item.category === portfolioCategory).map((item) => (
-                         <motion.div
-                           layout
-                           initial={{ opacity: 0, scale: 0.8 }}
-                           animate={{ opacity: 1, scale: 1 }}
-                           exit={{ opacity: 0, scale: 0.8 }}
-                           transition={{ duration: 0.4 }}
-                           key={item.id}
-                           onClick={() => setSelectedImage(item.image)}
-                           className="group relative rounded-2xl overflow-hidden bg-black/40 aspect-[4/3] cursor-pointer"
-                         >
-                            <Image 
-                              src={item.image} 
-                              alt={item.title} 
-                              fill 
-                              className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100" 
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#0a2540] via-[#0a2540]/30 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300"></div>
-                            
-                            {/* Hover Overlay Content */}
-                            <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                               <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                  <span className="text-accent-cyan text-xs font-bold uppercase tracking-widest">{item.category}</span>
-                                  <h3 className="text-2xl font-bold text-white mb-2">{item.title}</h3>
-                                  <p className="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{item.desc}</p>
-                               </div>
-                               
-                               {/* Fancy Zoom Icon */}
-                               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent-cyan/80 p-4 rounded-full text-white opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-300 backdrop-blur-sm shadow-[0_0_20px_rgba(0,212,255,0.6)]">
-                                  <Maximize2 size={24} />
-                               </div>
-                            </div>
-                         </motion.div>
-                       ))}
-                    </AnimatePresence>
-                 </motion.div>
+              {/* Content Area */}
+              <div className="flex-grow overflow-y-auto p-6 md:p-10 custom-scrollbar relative">
+                 <AnimatePresence mode="wait">
+                   {!activeAlbum ? (
+                     /* ALBUM VIEW */
+                     <motion.div 
+                       key="albums"
+                       initial={{ opacity: 0, x: -20 }}
+                       animate={{ opacity: 1, x: 0 }}
+                       exit={{ opacity: 0, x: -20 }}
+                       className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+                     >
+                       {/* Skip "All" in album view, just use the specific categories */}
+                       {portfolioCategories.filter(c => c !== 'All').map((cat) => {
+                         const coverImage = portfolioItems.find(item => item.category === cat)?.image || '/Why-choose-us.avif';
+                         const itemCount = portfolioItems.filter(item => item.category === cat).length;
+                         
+                         return (
+                           <div 
+                             key={cat}
+                             onClick={() => setActiveAlbum(cat)}
+                             className="group relative rounded-3xl overflow-hidden aspect-video cursor-pointer shadow-xl hover:shadow-[0_0_30px_rgba(0,212,255,0.2)] transition-all duration-500"
+                           >
+                             <Image src={coverImage} alt={cat} fill className="object-cover group-hover:scale-110 transition-transform duration-700 opacity-80" />
+                             <div className="absolute inset-0 bg-gradient-to-t from-[#0a2540] via-[#0a2540]/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity"></div>
+                             
+                             <div className="absolute bottom-0 left-0 w-full p-6 flex items-end justify-between">
+                                <div>
+                                   <div className="flex items-center gap-2 text-accent-cyan mb-2">
+                                     <Folder size={18} />
+                                     <span className="text-sm font-bold tracking-widest uppercase">{itemCount} Projects</span>
+                                   </div>
+                                   <h3 className="text-2xl md:text-3xl font-extrabold text-white">{cat}</h3>
+                                </div>
+                                <div className="bg-white/10 p-3 rounded-full text-white backdrop-blur-md group-hover:bg-accent-cyan group-hover:text-[#0a2540] transition-colors border border-white/20">
+                                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                                </div>
+                             </div>
+                           </div>
+                         );
+                       })}
+                     </motion.div>
+                   ) : (
+                     /* GRID VIEW FOR SPECIFIC ALBUM */
+                     <motion.div
+                       key="grid"
+                       initial={{ opacity: 0, x: 20 }}
+                       animate={{ opacity: 1, x: 0 }}
+                       exit={{ opacity: 0, x: 20 }}
+                       className="space-y-6"
+                     >
+                        <button 
+                          onClick={() => setActiveAlbum(null)}
+                          className="flex items-center gap-2 text-gray-400 hover:text-accent-cyan transition-colors font-bold tracking-wide mb-4 group"
+                        >
+                          <ChevronLeft size={20} className="group-hover:-translate-x-1 transition-transform" /> Back to Albums
+                        </button>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                           {currentAlbumItems.map((item, index) => (
+                             <motion.div
+                               layout
+                               initial={{ opacity: 0, scale: 0.8 }}
+                               animate={{ opacity: 1, scale: 1 }}
+                               transition={{ duration: 0.4, delay: index * 0.05 }}
+                               key={item.id}
+                               onClick={() => setSelectedImageIndex(index)}
+                               className="group relative rounded-2xl overflow-hidden bg-black/40 aspect-[4/3] cursor-pointer"
+                             >
+                                <Image 
+                                  src={item.image} 
+                                  alt={item.title} 
+                                  fill 
+                                  className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100" 
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#0a2540] via-transparent to-transparent opacity-80 group-hover:opacity-50 transition-opacity duration-300"></div>
+                                
+                                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                                   <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                                      <h3 className="text-xl font-bold text-white mb-1 drop-shadow-lg">{item.title}</h3>
+                                      <p className="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{item.desc}</p>
+                                   </div>
+                                   
+                                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent-cyan/90 p-3 rounded-full text-[#0a2540] opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-300 shadow-[0_0_20px_rgba(0,212,255,0.6)]">
+                                      <Maximize2 size={24} />
+                                   </div>
+                                </div>
+                             </motion.div>
+                           ))}
+                        </div>
+                     </motion.div>
+                   )}
+                 </AnimatePresence>
               </div>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
 
-      {/* IMAGE LIGHTBOX */}
+      {/* IMAGE LIGHTBOX CAROUSEL */}
       <AnimatePresence>
-        {selectedImage && (
+        {selectedImageIndex !== null && currentAlbumItems[selectedImageIndex] && (
           <div className="fixed inset-0 z-[300] flex items-center justify-center p-4">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setSelectedImage(null)}
-              className="absolute inset-0 bg-black/95 backdrop-blur-xl cursor-pointer"
+              onClick={() => setSelectedImageIndex(null)}
+              className="absolute inset-0 bg-[#0a2540]/95 backdrop-blur-2xl cursor-pointer"
             />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full h-full max-w-6xl max-h-[85vh] rounded-2xl overflow-hidden shadow-[0_0_100px_rgba(0,212,255,0.2)] z-10 flex items-center justify-center"
+            
+            {/* Prev Button */}
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImageIndex(prev => prev! > 0 ? prev! - 1 : currentAlbumItems.length - 1);
+              }}
+              className="absolute left-4 md:left-10 z-20 p-4 bg-white/5 hover:bg-accent-cyan rounded-full text-white hover:text-[#0a2540] transition-colors border border-white/10"
             >
-              <Image 
-                src={selectedImage} 
-                alt="Enlarged Portfolio View" 
-                fill 
-                className="object-contain drop-shadow-2xl" 
-                sizes="(max-width: 1024px) 100vw, 80vw"
-              />
-              <button 
-                onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 p-3 bg-black/50 hover:bg-accent-cyan rounded-full text-white transition-all z-20 group"
-              >
-                <X size={24} className="group-hover:rotate-90 transition-transform duration-300" />
-              </button>
+              <ChevronLeft size={32} />
+            </button>
+
+            <motion.div
+              key={selectedImageIndex}
+              initial={{ opacity: 0, x: 50, scale: 0.95 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: -50, scale: 0.95 }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="relative w-full h-full max-w-6xl max-h-[80vh] flex flex-col items-center justify-center z-10 pointer-events-none"
+            >
+              <div className="relative w-full h-full rounded-xl overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.8)] pointer-events-auto">
+                <Image 
+                  src={currentAlbumItems[selectedImageIndex].image} 
+                  alt={currentAlbumItems[selectedImageIndex].title} 
+                  fill 
+                  className="object-contain" 
+                  sizes="(max-width: 1024px) 100vw, 80vw"
+                />
+              </div>
+              
+              <div className="absolute bottom-[-60px] text-center w-full">
+                <h3 className="text-2xl font-bold text-white mb-1 drop-shadow-md">{currentAlbumItems[selectedImageIndex].title}</h3>
+                <p className="text-accent-cyan font-medium">{selectedImageIndex + 1} / {currentAlbumItems.length}</p>
+              </div>
             </motion.div>
+
+            {/* Next Button */}
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImageIndex(prev => prev! < currentAlbumItems.length - 1 ? prev! + 1 : 0);
+              }}
+              className="absolute right-4 md:right-10 z-20 p-4 bg-white/5 hover:bg-accent-cyan rounded-full text-white hover:text-[#0a2540] transition-colors border border-white/10"
+            >
+              <ChevronRight size={32} />
+            </button>
+
+            {/* Close Button */}
+            <button 
+              onClick={() => setSelectedImageIndex(null)}
+              className="absolute top-6 right-6 p-3 bg-black/50 hover:bg-red-500 rounded-full text-white transition-all z-20 border border-white/10"
+            >
+              <X size={24} />
+            </button>
           </div>
         )}
       </AnimatePresence>
