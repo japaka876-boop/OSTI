@@ -12,27 +12,27 @@ import Logo from '@/components/Logo';
 
 const services = [
   {
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1000&auto=format&fit=crop", 
+    image: "/maintenance-services.avif", 
     title: 'Maintenance Services',
     description: 'Keep your pool crystal clear and ready for enjoyment year-round.',
   },
   {
-    image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=1000&auto=format&fit=crop", 
+    image: "/New-construction.avif", 
     title: 'New Construction',
     description: 'Custom-designed pools built to your exact specifications and lifestyle.',
   },
   {
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop", 
+    image: "/Repairs-and-Warranty.avif", 
     title: 'Repairs & Warranty',
     description: 'Expert repair technicians ensuring your equipment runs flawlessly.',
   },
   {
-    image: "https://images.unsplash.com/photo-1562673005-7693bd6d6e54?q=80&w=1000&auto=format&fit=crop", 
+    image: "/Remodels.avif", 
     title: 'Pool Remodels',
     description: 'Transform your existing pool into a modern oasis of relaxation.',
   },
   {
-    image: "https://images.unsplash.com/photo-1520188740392-675e24c5813d?q=80&w=1000&auto=format&fit=crop", 
+    image: "/Lighting.avif", 
     title: 'Custom Lighting',
     description: 'Enhance your outdoor living space with stunning night lighting solutions.',
   },
