@@ -125,6 +125,7 @@ export default function HomePage() {
   const [selectedService, setSelectedService] = useState<string | null>(null);
   const [isPortfolioModalOpen, setIsPortfolioModalOpen] = useState(false);
   const [portfolioCategory, setPortfolioCategory] = useState('All');
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
     const textInterval = setInterval(() => {
@@ -617,6 +618,7 @@ export default function HomePage() {
                            exit={{ opacity: 0, scale: 0.8 }}
                            transition={{ duration: 0.4 }}
                            key={item.id}
+                           onClick={() => setSelectedImage(item.image)}
                            className="group relative rounded-2xl overflow-hidden bg-black/40 aspect-[4/3] cursor-pointer"
                          >
                             <Image 
@@ -645,6 +647,42 @@ export default function HomePage() {
                     </AnimatePresence>
                  </motion.div>
               </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* IMAGE LIGHTBOX */}
+      <AnimatePresence>
+        {selectedImage && (
+          <div className="fixed inset-0 z-[300] flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedImage(null)}
+              className="absolute inset-0 bg-black/95 backdrop-blur-xl cursor-pointer"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full h-full max-w-6xl max-h-[85vh] rounded-2xl overflow-hidden shadow-[0_0_100px_rgba(0,212,255,0.2)] z-10 flex items-center justify-center"
+            >
+              <Image 
+                src={selectedImage} 
+                alt="Enlarged Portfolio View" 
+                fill 
+                className="object-contain drop-shadow-2xl" 
+                sizes="(max-width: 1024px) 100vw, 80vw"
+              />
+              <button 
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-4 right-4 p-3 bg-black/50 hover:bg-accent-cyan rounded-full text-white transition-all z-20 group"
+              >
+                <X size={24} className="group-hover:rotate-90 transition-transform duration-300" />
+              </button>
             </motion.div>
           </div>
         )}
