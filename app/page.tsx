@@ -359,6 +359,24 @@ export default function HomePage() {
         </section>
       </main>
 
+      {/* LOCATION MAP */}
+      <section className="relative w-full h-[400px] border-t-8 border-accent-cyan">
+        <iframe
+          src="https://maps.google.com/maps?q=65145%20Two%20Bunch%20Palms%20Trail&t=&z=14&ie=UTF8&iwloc=&output=embed"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen={false}
+          loading="lazy"
+          className="grayscale hover:grayscale-0 transition-all duration-1000"
+        ></iframe>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+           <div className="bg-primary-blue/90 text-white px-6 py-3 rounded-xl shadow-2xl backdrop-blur-sm border border-white/20 animate-bounce">
+              <p className="font-bold flex items-center gap-2"><MapPin size={18} className="text-accent-cyan"/> Visit Our Office</p>
+           </div>
+        </div>
+      </section>
+
       {/* FOOTER */}
       <footer id="contact" className="bg-dark-gray text-white pt-24 pb-12">
         <div className="container mx-auto px-6">
@@ -392,7 +410,9 @@ export default function HomePage() {
                     <ul className="space-y-5">
                         <li className="flex items-start">
                             <MapPin className="h-5 w-5 mr-4 text-accent-cyan flex-shrink-0 mt-0.5" />
-                            <span className="text-gray-400">65145 Two Bunch Palms Trail,<br />Coachella Valley, CA</span>
+                            <a href="https://maps.google.com/maps?q=65145+Two+Bunch+Palms+Trail" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent-cyan transition-colors">
+                                65145 Two Bunch Palms Trail,<br />Coachella Valley, CA
+                            </a>
                         </li>
                         <li className="flex items-center border-t border-white/5 pt-4">
                             <Phone className="h-5 w-5 mr-4 text-accent-cyan flex-shrink-0" />
