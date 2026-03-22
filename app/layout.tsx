@@ -21,11 +21,11 @@ export default function RootLayout({
         {children}
         
         {/* HubSpot CRM & Chatbot Tracker */}
-        <Script
+        {/* <Script
           id="hs-script-loader"
           strategy="lazyOnload"
           src="//js.hs-scripts.com/TU_HUBSPOT_ID.js"
-        />
+        /> */}
       </body>
     </html>
   );
