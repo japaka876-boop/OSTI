@@ -125,6 +125,10 @@ export default function HomePage() {
                 <Mail size={14} />
                 <span className="font-medium tracking-wide">info@oceanspringstech.com</span>
               </a>
+              <a href="https://maps.google.com/maps?q=65145+Two+Bunch+Palms+Trail" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent-cyan transition-colors cursor-pointer group">
+                <MapPin size={14} className="group-hover:animate-bounce" />
+                <span className="font-medium tracking-wide">65145 Two Bunch Palms Trail</span>
+              </a>
             </div>
             <div className="tracking-wide">
               <span className="font-bold text-accent-cyan">Financing Available!</span> <span className="text-gray-500 mx-2">|</span> 
