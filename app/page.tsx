@@ -130,10 +130,27 @@ export default function HomePage() {
                 <span className="font-medium tracking-wide">65145 Two Bunch Palms Trail</span>
               </a>
             </div>
-            <div className="tracking-wide">
-              <span className="font-bold text-accent-cyan">Financing Available!</span> <span className="text-gray-500 mx-2">|</span> 
-              <span>Licensed & Insured</span> <span className="text-gray-500 mx-2">|</span> 
-              <span>Coachella Valley, CA</span>
+            <div className="flex items-center tracking-wide text-gray-400 font-medium">
+              <div className="relative group cursor-pointer">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-accent-cyan to-blue-500 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-500"></div>
+                <span className="relative flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#0a2540] border border-accent-cyan/50 text-accent-cyan font-bold tracking-wider overflow-hidden">
+                  <span className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:animate-[shimmer_2s_infinite]"></span>
+                  <CreditCard size={14} className="animate-pulse" />
+                  Financing Available!
+                </span>
+              </div>
+              
+              <span className="text-gray-600 mx-3 font-light">|</span> 
+
+              <span className="flex items-center gap-1.5 hover:text-gray-200 transition-colors cursor-default">
+                <ShieldCheck size={14} className="text-gray-500" /> Licensed & Insured
+              </span> 
+              
+              <span className="text-gray-600 mx-3 font-light">|</span> 
+              
+              <span className="flex items-center gap-1.5 hover:text-gray-200 transition-colors cursor-default">
+                <MapPin size={14} className="text-gray-500" /> Coachella Valley, CA
+              </span>
             </div>
           </div>
         </div>
