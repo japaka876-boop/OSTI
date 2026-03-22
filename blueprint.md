@@ -46,10 +46,11 @@ OSTI Pool Services is a premier provider of pool construction, renovation, and m
 
 *   The `next.config.mjs` file has been configured to allow images from `images.unsplash.com`.
 
-## 3. Current Task: Implement Hero Video
+## 3. Recently Completed: Implement Hero Video
 
 *   **Objective:** To replace the static hero image with a dynamic, high-quality video to create a more immersive and impressive user experience.
-*   **Tasks:**
-    1.  Source a suitable, freely-usable pool video.
-    2.  Replace the `<Image>` component in the hero section with a `<video>` element.
-    3.  Ensure the video autoplays, is muted, loops, and covers the entire section.
+*   **Status:** **[COMPLETED]**
+*   **Implementation Details:** 
+    * Sourced a free, high-quality pool video from Mixkit.
+    * Replaced the static CSS background image in the hero `<section>` with an HTML5 `<video>` element (`autoPlay`, `loop`, `muted`, `playsInline`).
+    * Configured proper `z-index` layers to ensure layout elements like the darkening overlay, headers, and call-to-action buttons stay readable and clickable across all devices.

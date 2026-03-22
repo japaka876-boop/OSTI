@@ -110,14 +110,19 @@ export default function HomePage() {
       </header>
 
       <main>
-        <section
-          className="relative h-[600px] bg-cover bg-center text-white"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop')`,
-          }}
-        >
-          <div className="absolute inset-0 bg-black opacity-50"></div>
-          <div className="container mx-auto px-6 relative h-full flex flex-col justify-center items-center text-center">
+        <section className="relative h-[600px] text-white overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+             <source src="https://assets.mixkit.co/videos/preview/mixkit-water-in-a-luxurious-pool-under-the-sun-2879-large.mp4" type="video/mp4" />
+             Your browser does not support the video tag.
+          </video>
+          <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+          <div className="container mx-auto px-6 relative z-20 h-full flex flex-col justify-center items-center text-center">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight">Building Your Personal Oasis</h1>
             <p className="mt-4 text-lg md:text-xl max-w-3xl">Where luxury meets tranquility, we create the backyard of your dreams.</p>
             <div className="mt-8">
