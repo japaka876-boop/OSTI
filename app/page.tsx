@@ -12,27 +12,27 @@ import Logo from '@/components/Logo';
 
 const services = [
   {
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1000&auto=format&fit=crop", // Clear pool / maintenance
+    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1000&auto=format&fit=crop", 
     title: 'Maintenance Services',
     description: 'Keep your pool crystal clear and ready for enjoyment year-round.',
   },
   {
-    image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=1000&auto=format&fit=crop", // Brand new luxury pool
+    image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=1000&auto=format&fit=crop", 
     title: 'New Construction',
     description: 'Custom-designed pools built to your exact specifications and lifestyle.',
   },
   {
-    image: "https://images.unsplash.com/photo-1583316174775-bd6dc0e9f298?q=80&w=1000&auto=format&fit=crop", // Technical / Equipment / Repair
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop", 
     title: 'Repairs & Warranty',
     description: 'Expert repair technicians ensuring your equipment runs flawlessly.',
   },
   {
-    image: "https://images.unsplash.com/photo-1622397333309-3056849bc70b?q=80&w=1000&auto=format&fit=crop", // Beautiful renovated pool
+    image: "https://images.unsplash.com/photo-1562673005-7693bd6d6e54?q=80&w=1000&auto=format&fit=crop", 
     title: 'Pool Remodels',
     description: 'Transform your existing pool into a modern oasis of relaxation.',
   },
   {
-    image: "https://images.unsplash.com/photo-1520188740392-675e24c5813d?q=80&w=1000&auto=format&fit=crop", // Pool glowing at night
+    image: "https://images.unsplash.com/photo-1520188740392-675e24c5813d?q=80&w=1000&auto=format&fit=crop", 
     title: 'Custom Lighting',
     description: 'Enhance your outdoor living space with stunning night lighting solutions.',
   },
@@ -422,11 +422,11 @@ export default function HomePage() {
                       alt={service.title} 
                       fill 
                       sizes="(max-width: 1024px) 100vw, 20vw"
-                      className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out opacity-80 group-hover:opacity-40" 
+                      className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out opacity-100 group-hover:opacity-40" 
                   />
-                  {/* Gradients */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a2540] via-[#0a2540]/60 to-transparent group-hover:opacity-90 transition-opacity duration-500"></div>
-                  <div className="absolute inset-0 bg-gradient-to-tr from-accent-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  {/* Subtle Gradient for Text Readability - Lower Opacity Default */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a2540]/80 via-[#0a2540]/20 to-transparent group-hover:opacity-100 opacity-60 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-accent-cyan/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
                   {/* Content */}
                   <div className="absolute inset-0 p-6 lg:p-4 xl:p-6 flex flex-col justify-end">
