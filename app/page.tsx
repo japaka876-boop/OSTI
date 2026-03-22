@@ -117,9 +117,9 @@ export default function HomePage() {
         <div className="bg-[#0a2540] text-gray-300 text-xs py-1.5 hidden md:block border-b border-light-gray/10">
           <div className="container mx-auto px-6 flex justify-between items-center">
             <div className="flex items-center gap-6">
-              <a href="tel:2285552500" className="flex items-center gap-2 hover:text-accent-cyan transition-colors cursor-pointer group">
+              <a href="tel:7603298933" className="flex items-center gap-2 hover:text-accent-cyan transition-colors cursor-pointer group">
                 <Phone size={14} className="group-hover:animate-pulse" />
-                <span className="font-medium tracking-wide">(228) 555-2500</span>
+                <span className="font-medium tracking-wide">(760) 329-8933</span>
               </a>
               <a href="mailto:info@oceanspringstech.com" className="flex items-center gap-2 hover:text-accent-cyan transition-colors cursor-pointer group">
                 <Mail size={14} />
@@ -392,11 +392,11 @@ export default function HomePage() {
                     <ul className="space-y-5">
                         <li className="flex items-start">
                             <MapPin className="h-5 w-5 mr-4 text-accent-cyan flex-shrink-0 mt-0.5" />
-                            <span className="text-gray-400">Coachella Valley,<br />California, USA</span>
+                            <span className="text-gray-400">65145 Two Bunch Palms Trail,<br />Coachella Valley, CA</span>
                         </li>
                         <li className="flex items-center border-t border-white/5 pt-4">
                             <Phone className="h-5 w-5 mr-4 text-accent-cyan flex-shrink-0" />
-                            <a href="tel:2285552500" className="text-gray-400 hover:text-accent-cyan transition-colors font-medium">(228) 555-2500</a>
+                            <a href="tel:7603298933" className="text-gray-400 hover:text-accent-cyan transition-colors font-medium">(760) 329-8933</a>
                         </li>
                         <li className="flex items-center border-t border-white/5 pt-4">
                             <Mail className="h-5 w-5 mr-4 text-accent-cyan flex-shrink-0" />
