@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin, Star, CreditCard, Menu, X, CheckCircle, CheckCircle2 } from 'lucide-react';
+import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin, Star, CreditCard, Menu, X, CheckCircle, CheckCircle2, Maximize2 } from 'lucide-react';
 import Logo from '@/components/Logo';
 
 // ... (skipping unchanged code to save space) wait, the tool expects EXACT replacement string.
@@ -106,6 +106,16 @@ const whyChooseUsImages = [
   "/Why-choose-us3.avif"
 ];
 
+const portfolioCategories = ['All', 'New Construction', 'Remodeling', 'Maintenance'];
+const portfolioItems = [
+  { id: 1, category: 'New Construction', image: '/Why-choose-us.avif', title: 'Modern Infinity Edge', desc: 'Seamless integration with desert landscape.' },
+  { id: 2, category: 'Remodeling', image: '/Why-choose-us1.avif', title: 'Resort Style Upgrade', desc: 'Complete replastering and new custom tile.' },
+  { id: 3, category: 'New Construction', image: '/Why-choose-us2.avif', title: 'Geometric Oasis', desc: 'Sleek lines with an integrated spa and lighting.' },
+  { id: 4, category: 'Maintenance', image: '/Why-choose-us3.avif', title: 'Pristine Revival', desc: 'Acid wash and full system rebalancing.' },
+  { id: 5, category: 'Remodeling', image: '/service-remodel.avif', title: 'Classic Renovation', desc: 'Stone coping and waterfall feature addition.' },
+  { id: 6, category: 'New Construction', image: '/service-new.avif', title: 'Family Paradise', desc: 'Large freeform pool optimized for relaxation.' },
+];
+
 export default function HomePage() {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [currentWhyUsIndex, setCurrentWhyUsIndex] = useState(0);
@@ -113,6 +123,8 @@ export default function HomePage() {
   const [isFinancingModalOpen, setIsFinancingModalOpen] = useState(false);
   const [isEstimateModalOpen, setIsEstimateModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [isPortfolioModalOpen, setIsPortfolioModalOpen] = useState(false);
+  const [portfolioCategory, setPortfolioCategory] = useState('All');
 
   useEffect(() => {
     const textInterval = setInterval(() => {
@@ -193,7 +205,17 @@ export default function HomePage() {
                       <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-accent-cyan rounded-full"></span>
                     </a>
                     {['Services', 'About Us', 'Portfolio', 'Reviews', 'Contact'].map((item) => (
-                      <a key={item} href={`#${item.toLowerCase().replace(' ', '-')}`} className="relative group hover:text-accent-cyan transition-colors duration-300">
+                      <a 
+                        key={item} 
+                        href={`#${item.toLowerCase().replace(' ', '-')}`} 
+                        onClick={(e) => {
+                          if (item === 'Portfolio') {
+                            e.preventDefault();
+                            setIsPortfolioModalOpen(true);
+                          }
+                        }}
+                        className="relative group hover:text-accent-cyan transition-colors duration-300"
+                      >
                         {item}
                         <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-accent-cyan rounded-full transition-all duration-300 group-hover:w-full"></span>
                       </a>
@@ -238,7 +260,13 @@ export default function HomePage() {
                   <a 
                     key={item} 
                     href={`#${item.toLowerCase().replace(' ', '-')}`} 
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={(e) => {
+                      setIsMobileMenuOpen(false);
+                      if (item === 'Portfolio') {
+                        e.preventDefault();
+                        setIsPortfolioModalOpen(true);
+                      }
+                    }}
                     className="border-b border-gray-100 pb-3 hover:text-accent-cyan transition-colors w-full"
                   >
                     {item}
@@ -531,6 +559,97 @@ export default function HomePage() {
         )}
       </AnimatePresence>
 
+      {/* PORTFOLIO MODAL */}
+      <AnimatePresence>
+        {isPortfolioModalOpen && (
+          <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsPortfolioModalOpen(false)}
+              className="absolute inset-0 bg-[#0a2540]/90 backdrop-blur-lg cursor-pointer"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 30 }}
+              transition={{ type: "spring", duration: 0.6 }}
+              className="relative w-full max-w-7xl h-[90vh] bg-[#0a2540] rounded-3xl shadow-[0_0_60px_rgba(0,0,0,0.8)] overflow-hidden z-10 flex flex-col border border-white/10"
+            >
+              {/* Modal Header */}
+              <div className="flex-shrink-0 flex items-center justify-between p-6 md:p-8 border-b border-white/10 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-96 h-96 bg-accent-cyan/20 blur-[120px] rounded-full -mr-48 -mt-48 pointer-events-none"></div>
+                <div>
+                   <span className="text-accent-cyan font-bold text-sm tracking-widest uppercase mb-2 block">Interactive Gallery</span>
+                   <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">Our <span className="text-accent-cyan">Masterpieces</span></h2>
+                </div>
+                <button 
+                  onClick={() => setIsPortfolioModalOpen(false)}
+                  className="p-3 bg-white/5 hover:bg-accent-cyan rounded-full text-gray-300 hover:text-white transition-all z-20 group"
+                >
+                  <X size={28} className="group-hover:rotate-90 transition-transform duration-300" />
+                </button>
+              </div>
+
+              {/* Filters */}
+              <div className="flex-shrink-0 p-6 flex flex-wrap gap-3 justify-center border-b border-white/5 bg-black/20">
+                 {portfolioCategories.map(cat => (
+                   <button
+                     key={cat}
+                     onClick={() => setPortfolioCategory(cat)}
+                     className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 ${portfolioCategory === cat ? 'bg-accent-cyan text-[#0a2540] shadow-[0_0_15px_rgba(0,212,255,0.6)]' : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'}`}
+                   >
+                     {cat}
+                   </button>
+                 ))}
+              </div>
+
+              {/* Masonry Grid */}
+              <div className="flex-grow overflow-y-auto p-6 md:p-10 custom-scrollbar">
+                 <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <AnimatePresence>
+                       {portfolioItems.filter(item => portfolioCategory === 'All' || item.category === portfolioCategory).map((item) => (
+                         <motion.div
+                           layout
+                           initial={{ opacity: 0, scale: 0.8 }}
+                           animate={{ opacity: 1, scale: 1 }}
+                           exit={{ opacity: 0, scale: 0.8 }}
+                           transition={{ duration: 0.4 }}
+                           key={item.id}
+                           className="group relative rounded-2xl overflow-hidden bg-black/40 aspect-[4/3] cursor-pointer"
+                         >
+                            <Image 
+                              src={item.image} 
+                              alt={item.title} 
+                              fill 
+                              className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100" 
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#0a2540] via-[#0a2540]/30 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300"></div>
+                            
+                            {/* Hover Overlay Content */}
+                            <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                               <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                  <span className="text-accent-cyan text-xs font-bold uppercase tracking-widest">{item.category}</span>
+                                  <h3 className="text-2xl font-bold text-white mb-2">{item.title}</h3>
+                                  <p className="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{item.desc}</p>
+                               </div>
+                               
+                               {/* Fancy Zoom Icon */}
+                               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent-cyan/80 p-4 rounded-full text-white opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-300 backdrop-blur-sm shadow-[0_0_20px_rgba(0,212,255,0.6)]">
+                                  <Maximize2 size={24} />
+                               </div>
+                            </div>
+                         </motion.div>
+                       ))}
+                    </AnimatePresence>
+                 </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
       <main className="pt-[110px] md:pt-[130px]">
         {/* HERO SECTION */}
         <section className="relative h-[80vh] min-h-[600px] text-white overflow-hidden flex items-center">
@@ -583,9 +702,11 @@ export default function HomePage() {
                   className="bg-accent-cyan text-white font-bold py-4 px-8 rounded-lg hover:bg-white hover:text-primary-blue transition-all shadow-[0_0_20px_rgba(0,212,255,0.4)] text-center flex items-center justify-center group">
                   Get a Free Estimate <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </button>
-                <a href="#portfolio" className="bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-lg hover:bg-white/10 transition-all text-center">
+                <button 
+                  onClick={() => setIsPortfolioModalOpen(true)}
+                  className="bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-lg hover:bg-white/10 transition-all text-center">
                   View Our Work
-                </a>
+                </button>
               </motion.div>
             </motion.div>
           </div>
