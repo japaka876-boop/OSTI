@@ -12,27 +12,27 @@ import Logo from '@/components/Logo';
 
 const services = [
   {
-    image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=2070&auto=format&fit=crop",
-    title: 'Pool Construction',
-    description: 'Custom-designed pools built to your specifications and lifestyle.',
-  },
-  {
-    image: "https://images.unsplash.com/photo-1562673005-7693bd6d6e54?q=80&w=2070&auto=format&fit=crop",
-    title: 'Pool Renovation & Remodels',
-    description: 'Transform your existing pool into a modern oasis of relaxation.',
-  },
-  {
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1000&auto=format&fit=crop", // Clear pool / maintenance
     title: 'Maintenance Services',
     description: 'Keep your pool crystal clear and ready for enjoyment year-round.',
   },
   {
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop",
-    title: 'Repairs and Warranty',
+    image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=1000&auto=format&fit=crop", // Brand new luxury pool
+    title: 'New Construction',
+    description: 'Custom-designed pools built to your exact specifications and lifestyle.',
+  },
+  {
+    image: "https://images.unsplash.com/photo-1583316174775-bd6dc0e9f298?q=80&w=1000&auto=format&fit=crop", // Technical / Equipment / Repair
+    title: 'Repairs & Warranty',
     description: 'Expert repair technicians ensuring your equipment runs flawlessly.',
   },
   {
-    image: "https://images.unsplash.com/photo-1520188740392-675e24c5813d?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1622397333309-3056849bc70b?q=80&w=1000&auto=format&fit=crop", // Beautiful renovated pool
+    title: 'Pool Remodels',
+    description: 'Transform your existing pool into a modern oasis of relaxation.',
+  },
+  {
+    image: "https://images.unsplash.com/photo-1520188740392-675e24c5813d?q=80&w=1000&auto=format&fit=crop", // Pool glowing at night
     title: 'Custom Lighting',
     description: 'Enhance your outdoor living space with stunning night lighting solutions.',
   },
@@ -395,41 +395,48 @@ export default function HomePage() {
             </div>
         </section>
 
-        {/* SERVICES SECTION */}
-        <section id="services" className="py-24 bg-light-gray">
-          <div className="container mx-auto px-6 text-center">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-              <h2 className="text-4xl font-heading font-bold text-primary-blue">Complete Project Solutions</h2>
-              <p className="mt-4 text-lg text-medium-gray max-w-2xl mx-auto">
-                We handle every aspect of your pool&#39;s lifecycle with expert technicians and premium materials.
+
+        <section id="services" className="py-24 bg-white relative">
+          <div className="container mx-auto px-4 max-w-[1600px]">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp} className="text-center mb-16">
+              <p className="text-accent-cyan font-bold tracking-widest uppercase mb-3 flex items-center justify-center gap-2">
+                 <span className="w-8 h-[2px] bg-accent-cyan"></span> How it works <span className="w-8 h-[2px] bg-accent-cyan"></span>
               </p>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-[#0a2540]">Our Services</h2>
+              <p className="text-gray-500 mt-4 max-w-2xl mx-auto">We handle every aspect of your pool&apos;s lifecycle with expert technicians and premium materials.</p>
             </motion.div>
-            
+
+            {/* 5-Column Grid for Desktop, Scrollable/Grid on Mobile */}
             <motion.div 
               initial="hidden" 
               whileInView="visible" 
               viewport={{ once: true }} 
-              variants={staggerContainer}
-              className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              variants={staggerContainer} 
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
             >
               {services.map((service, idx) => (
-                <motion.div key={service.title} variants={fadeInUp} className="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group border border-gray-100 pb-6">
-                    <div className="relative w-full h-56 overflow-hidden">
-                        <Image 
-                            src={service.image} 
-                            alt={service.title} 
-                            fill 
-                            sizes="(max-width: 768px) 100vw, 33vw"
-                            className="object-cover group-hover:scale-110 transition-transform duration-700" 
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        <h3 className="absolute bottom-4 left-6 text-2xl font-bold text-white shadow-sm">{service.title}</h3>
-                    </div>
-                  <div className="p-6 text-left">
-                    <p className="text-medium-gray mb-6 h-12">{service.description}</p>
-                    <a href="#" className="text-accent-cyan font-bold hover:text-primary-blue transition-colors flex items-center group/link">
-                        Explore Service <ArrowRight className="ml-2 h-4 w-4 group-hover/link:translate-x-1 transition-transform" />
-                    </a>
+                <motion.div key={service.title} variants={fadeInUp} className="relative group rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500 bg-[#0a2540] aspect-[3/4] max-h-[450px] w-full cursor-pointer isolate">
+                  {/* Background Image */}
+                  <Image 
+                      src={service.image} 
+                      alt={service.title} 
+                      fill 
+                      sizes="(max-width: 1024px) 100vw, 20vw"
+                      className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out opacity-80 group-hover:opacity-40" 
+                  />
+                  {/* Gradients */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a2540] via-[#0a2540]/60 to-transparent group-hover:opacity-90 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-accent-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  {/* Content */}
+                  <div className="absolute inset-0 p-6 lg:p-4 xl:p-6 flex flex-col justify-end">
+                      <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                         <h3 className="text-xl xl:text-2xl font-bold text-white mb-3 tracking-wide leading-tight">{service.title}</h3>
+                         <div className="h-[2px] w-12 bg-accent-cyan mb-4 group-hover:w-full transition-all duration-500"></div>
+                         <p className="text-gray-300 text-sm xl:text-base opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 line-clamp-3">
+                           {service.description}
+                         </p>
+                      </div>
                   </div>
                 </motion.div>
               ))}
