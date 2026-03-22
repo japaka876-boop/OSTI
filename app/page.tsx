@@ -200,7 +200,10 @@ export default function HomePage() {
                 </nav>
 
                 {/* Glowing Premium CTA Button */}
-                <button className="hidden lg:flex relative group overflow-hidden bg-gradient-to-r from-primary-blue to-[#0a2540] text-white font-bold py-2.5 px-7 rounded-full transition-all duration-300 shadow-[0_4px_15px_rgba(10,37,64,0.4)] hover:shadow-[0_8px_25px_rgba(0,212,255,0.4)] hover:-translate-y-0.5">
+                <button 
+                    onClick={() => setIsEstimateModalOpen(true)}
+                    className="hidden lg:flex relative group overflow-hidden bg-gradient-to-r from-primary-blue to-[#0a2540] text-white font-bold py-2.5 px-7 rounded-full transition-all duration-300 shadow-[0_4px_15px_rgba(10,37,64,0.4)] hover:shadow-[0_8px_25px_rgba(0,212,255,0.4)] hover:-translate-y-0.5"
+                >
                     <span className="relative z-10 flex items-center gap-2">
                        Free Estimate <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                     </span>
@@ -257,9 +260,15 @@ export default function HomePage() {
                 <a href="mailto:info@oceanspringstech.com" className="flex items-center gap-3 text-gray-500 hover:text-accent-cyan transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
                   <Mail size={20} /> Email Us
                 </a>
-                <button className="w-full mt-4 bg-gradient-to-r from-primary-blue to-accent-cyan text-white font-bold py-3.5 rounded-full shadow-[0_4px_15px_rgba(0,212,255,0.4)] hover:shadow-lg transition-all active:scale-95 text-center flex justify-center items-center gap-2">
-                  Get Free Estimate <ArrowRight size={18} />
-                </button>
+                 <button 
+                  onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setIsEstimateModalOpen(true);
+                  }}
+                  className="w-full mt-4 bg-gradient-to-r from-primary-blue to-accent-cyan text-white font-bold py-3.5 rounded-full shadow-[0_4px_15px_rgba(0,212,255,0.4)] hover:shadow-lg transition-all active:scale-95 text-center flex justify-center items-center gap-2"
+                >
+                   Get Free Estimate <ArrowRight size={18} />
+                 </button>
              </div>
           </motion.div>
         )}
