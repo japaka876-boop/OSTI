@@ -71,12 +71,12 @@ const whyChooseUsFeatures = [
 ];
 
 // Reusable animation variants
-const fadeInUp: any = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as any } }
 };
 
-const staggerContainer: any = {
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -84,25 +84,25 @@ const staggerContainer: any = {
   }
 };
 
+const heroTexts = [
+  {
+    title: <>Build your dream <br className="hidden md:block"/><span className="text-accent-cyan">Swimming Pool</span></>,
+    subtitle: "From luxury new construction to expert maintenance and lighting."
+  },
+  {
+    title: <>Where the desert <br className="hidden md:block"/><span className="text-accent-cyan">Meets the springs</span></>,
+    subtitle: "Transforming your Coachella Valley backyard into a personal oasis."
+  },
+  {
+    title: <>Enhance Your <br className="hidden md:block"/><span className="text-accent-cyan">Outdoor Living</span> Space</>,
+    subtitle: "The most trusted pool experts. Financing available today."
+  }
+];
+
 export default function HomePage() {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isFinancingModalOpen, setIsFinancingModalOpen] = useState(false);
-
-  const heroTexts = [
-    {
-      title: <>Build your dream <br className="hidden md:block"/><span className="text-accent-cyan">Swimming Pool</span></>,
-      subtitle: "From luxury new construction to expert maintenance and lighting."
-    },
-    {
-      title: <>Where the desert <br className="hidden md:block"/><span className="text-accent-cyan">Meets the springs</span></>,
-      subtitle: "Transforming your Coachella Valley backyard into a personal oasis."
-    },
-    {
-      title: <>Enhance Your <br className="hidden md:block"/><span className="text-accent-cyan">Outdoor Living</span> Space</>,
-      subtitle: "The most trusted pool experts. Financing available today."
-    }
-  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -281,7 +281,7 @@ export default function HomePage() {
                     </p>
                     <h2 className="text-4xl md:text-5xl font-extrabold text-[#0a2540] mb-8 tracking-tight">Financing Now!</h2>
                     <p className="text-gray-500 max-w-3xl mx-auto leading-relaxed text-lg">
-                      Don't let your project stop! With the financing options offered, you can make that dream come true. Whether you want a small plunge pool or a large pool, these financing solutions can help you build the pool of your dreams without breaking the bank.
+                      Don&apos;t let your project stop! With the financing options offered, you can make that dream come true. Whether you want a small plunge pool or a large pool, these financing solutions can help you build the pool of your dreams without breaking the bank.
                     </p>
                  </div>
 
