@@ -411,7 +411,7 @@ export default function HomePage() {
 
                     <div className="mt-10 pt-10 border-t border-white/10">
                        <div className="flex items-center gap-4 mb-3">
-                          <Logo /> <span className="text-2xl font-black">OSTI</span>
+                          <Logo variant="light" /> <span className="text-2xl font-black">OSTI</span>
                        </div>
                        <p className="text-gray-400 text-sm italic">&quot;Nearly 27 years of excellence in the Coachella Valley.&quot;</p>
                     </div>
@@ -727,7 +727,7 @@ export default function HomePage() {
                       <span className="w-8 h-[2px] bg-accent-cyan"></span>
                     </h3>
                     <div className="flex items-center gap-2 mb-4">
-                       <Logo /> <span className="text-xl font-bold">OSTI</span>
+                       <Logo variant="light" /> <span className="text-xl font-bold">OSTI</span>
                     </div>
                     <p className="text-gray-400 text-sm leading-relaxed pr-2">
                        OSTI has been the gold standard in the Coachella Valley for close to 27 years. Founded on the principles of tenacity, integrity, and unparalleled customer service, OSTI continues to be the first choice of locals throughout the Valley.
