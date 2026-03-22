@@ -87,6 +87,7 @@ const staggerContainer: any = {
 export default function HomePage() {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isFinancingModalOpen, setIsFinancingModalOpen] = useState(false);
 
   const heroTexts = [
     {
@@ -132,7 +133,10 @@ export default function HomePage() {
               </a>
             </div>
             <div className="flex items-center tracking-wide text-gray-400 font-medium">
-              <div className="relative group cursor-pointer">
+              <div 
+                className="relative group cursor-pointer"
+                onClick={() => setIsFinancingModalOpen(true)}
+              >
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-accent-cyan to-blue-500 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-500"></div>
                 <span className="relative flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#0a2540] border border-accent-cyan/50 text-accent-cyan font-bold tracking-wider overflow-hidden">
                   <span className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:animate-[shimmer_2s_infinite]"></span>
@@ -232,6 +236,12 @@ export default function HomePage() {
                     {item}
                   </a>
                 ))}
+                <button 
+                  onClick={() => { setIsMobileMenuOpen(false); setIsFinancingModalOpen(true); }}
+                  className="flex items-center gap-2 border-b border-gray-100 pb-3 hover:text-accent-cyan transition-colors w-full text-left"
+                >
+                  <CreditCard size={18} className="text-accent-cyan" /> Financing Options
+                </button>
              </nav>
              <div className="mt-auto pt-10 flex flex-col gap-5">
                 <a href="https://maps.google.com/maps?q=65145+Two+Bunch+Palms+Trail" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-500 hover:text-accent-cyan transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
@@ -248,6 +258,71 @@ export default function HomePage() {
                 </button>
              </div>
           </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* FINANCING MODAL */}
+      <AnimatePresence>
+        {isFinancingModalOpen && (
+          <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsFinancingModalOpen(false)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-pointer"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: "spring", duration: 0.5 }}
+              className="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden z-10 flex flex-col max-h-[90vh]"
+            >
+              <button 
+                onClick={() => setIsFinancingModalOpen(false)}
+                className="absolute top-4 right-4 p-2 bg-gray-100 hover:bg-accent-cyan rounded-full text-gray-500 hover:text-white transition-colors z-20"
+              >
+                <X size={24} />
+              </button>
+              
+              <div className="p-8 md:p-14 overflow-y-auto">
+                 <div className="text-center mb-12">
+                    <p className="text-accent-cyan font-semibold tracking-widest uppercase text-sm mb-4 flex items-center justify-center gap-2">
+                       <span className="w-12 h-[1px] bg-accent-cyan"></span> Start your project <span className="w-12 h-[1px] bg-accent-cyan"></span>
+                    </p>
+                    <h2 className="text-4xl md:text-5xl font-extrabold text-[#0a2540] mb-8 tracking-tight">Financing Now!</h2>
+                    <p className="text-gray-500 max-w-3xl mx-auto leading-relaxed text-lg">
+                      Don't let your project stop! With the financing options offered, you can make that dream come true. Whether you want a small plunge pool or a large pool, these financing solutions can help you build the pool of your dreams without breaking the bank.
+                    </p>
+                 </div>
+
+                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center justify-center">
+                    {/* Partner Cards - Typographic Placeholders using Tailwind */}
+                    {[
+                      { name: 'LYON FINANCIAL', custom: 'font-serif text-[#0a2540] items-center flex gap-2' },
+                      { name: 'HFS', postfix: 'Home Improvement Loans', custom: 'font-sans text-orange-600 font-black tracking-tighter text-3xl' },
+                      { name: 'VIKING', postfix: 'CAPITAL', custom: 'font-serif text-purple-900 tracking-widest uppercase flex flex-col' },
+                      { name: 'LIGHTSTREAM', postfix: 'A Division of SunTrust Bank', custom: 'font-sans font-extrabold italic text-orange-400 flex flex-col' }
+                    ].map((partner, i) => (
+                      <div key={i} className="bg-white rounded-xl p-6 h-36 flex flex-col items-center justify-center border border-gray-200 hover:border-accent-cyan hover:shadow-xl transition-all duration-300 group cursor-pointer grayscale hover:grayscale-0 relative overflow-hidden">
+                         <div className="absolute inset-0 bg-gradient-to-br from-accent-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                         <h3 className={`text-center text-xl relative z-10 ${partner.custom} group-hover:scale-110 transition-transform`}>
+                           {partner.name}
+                           {partner.postfix && <span className="text-[9px] text-gray-400 font-normal tracking-normal mt-1 block uppercase">{partner.postfix}</span>}
+                         </h3>
+                      </div>
+                    ))}
+                 </div>
+                 
+                 <div className="mt-14 text-center">
+                   <button className="bg-gradient-to-r from-primary-blue to-[#0a2540] text-white font-bold py-4 px-12 rounded-full shadow-[0_4px_15px_rgba(10,37,64,0.4)] hover:shadow-[0_8px_30px_rgba(0,212,255,0.5)] hover:-translate-y-1 transition-all text-lg group">
+                     Apply for Financing <ArrowRight className="inline ml-2 group-hover:translate-x-1 transition-transform" />
+                   </button>
+                 </div>
+              </div>
+            </motion.div>
+          </div>
         )}
       </AnimatePresence>
 
