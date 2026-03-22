@@ -291,7 +291,7 @@ export default function HomePage() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", duration: 0.5 }}
-              className="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden z-10 flex flex-col max-h-[90vh]"
+              className="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden z-10 flex flex-col lg:flex-row max-h-[90vh]"
             >
               <button 
                 onClick={() => setIsFinancingModalOpen(false)}
@@ -768,8 +768,11 @@ export default function HomePage() {
            </div>
            
            <div className="mt-14 text-center">
-             <button className="bg-gradient-to-r from-primary-blue to-[#0a2540] text-white font-bold py-4 px-12 rounded-full shadow-[0_4px_15px_rgba(10,37,64,0.4)] hover:shadow-[0_8px_30px_rgba(0,212,255,0.5)] hover:-translate-y-1 transition-all text-lg group">
-               Apply for Financing <ArrowRight className="inline ml-2 group-hover:translate-x-1 transition-transform" />
+             <button 
+                onClick={() => setIsFinancingModalOpen(true)}
+                className="bg-gradient-to-r from-primary-blue to-[#0a2540] text-white font-bold py-4 px-12 rounded-full shadow-[0_4px_15px_rgba(10,37,64,0.4)] hover:shadow-[0_8px_30px_rgba(0,212,255,0.5)] hover:-translate-y-1 transition-all text-lg group"
+              >
+                Apply for Financing <ArrowRight className="inline ml-2 group-hover:translate-x-1 transition-transform" />
              </button>
            </div>
         </div>
