@@ -54,3 +54,20 @@ OSTI Pool Services is a premier provider of pool construction, renovation, and m
     * Sourced a free, high-quality pool video from Mixkit.
     * Replaced the static CSS background image in the hero `<section>` with an HTML5 `<video>` element (`autoPlay`, `loop`, `muted`, `playsInline`).
     * Configured proper `z-index` layers to ensure layout elements like the darkening overlay, headers, and call-to-action buttons stay readable and clickable across all devices.
+
+## 4. Phase 2: Site Update & SEO Proposal (Level 2)
+
+El proyecto ha entrado en la Fase 2, enfocada en la modernización profunda, posicionamiento SEO (mercado de Coachella Valley, California) y captura de *leads*.
+
+**Características principales añadidas al alcance:**
+1.  **Modernización y Contenido:** Reescritura de copy, corrección de enlaces rotos, creación de `/faq` y `/blog`.
+2.  **Integración Multimedia Avanzada:** Expansión del uso de videos (Lazy loading) a secciones como *About Us*, y una mejora completa de la galería y portafolio interactivo (documentación de "Antes/Después" y soluciones).
+3.  **Reseñas y Confianza:** Renovación de la página de reseñas e integración con servicios de terceros (Google Reviews).
+4.  **Generación de Leads (CRM):** Incorporación de un chatbot con opciones de agente en vivo, conectado de forma nativa al CRM de **HubSpot** (Edición gratuita) para capturar y filtrar clientes potenciales de forma eficiente. *(**PENDIENTE:** Recopilar el `HubSpot ID` del cliente para reemplazar el placeholder en `layout.tsx` y poder empezar a recibir los leads).*
+5.  **Despliegue y Rendimiento:** Toda la arquitectura se auditará y preparará para ser servida desde la red global, maximizando el Mobile Responsiveness y las métricas de Core Web Vitals (vital para el SEO local).
+
+### 4.1 Estrategia de Contenido Extraída del Sitio Actual
+De acuerdo con el sitio en vivo (`oceanspringstech.com`), el nuevo contenido se estructurará alrededor de los siguientes pilares clave para el *Coachella Valley*:
+- **Servicios Principales a Mostrar:** Maintenance Services, New construction, Repairs and Warranty, Remodels, Lighting.
+- **Puntos de Venta (USP):** "Expert Technicians", "Complete Projects" y disponibilidad de "Financing Now!".
+- **Tono SEO:** Focalizado en ser "la compañía más confiable del Coachella Valley" para embellecer espacios exteriores (Outdoor Living Spaces).
