@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin, Star, CreditCard, Menu, X, CheckCircle } from 'lucide-react';
+import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin, Star, CreditCard, Menu, X, CheckCircle, CheckCircle2 } from 'lucide-react';
 import Logo from '@/components/Logo';
 
 // ... (skipping unchanged code to save space) wait, the tool expects EXACT replacement string.
@@ -112,6 +112,7 @@ export default function HomePage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isFinancingModalOpen, setIsFinancingModalOpen] = useState(false);
   const [isEstimateModalOpen, setIsEstimateModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState<string | null>(null);
 
   useEffect(() => {
     const textInterval = setInterval(() => {
@@ -364,57 +365,108 @@ export default function HomePage() {
                 <X size={24} />
               </button>
               
-              {/* Left Half - Form (Matches User Image) */}
-              <div className="w-full lg:w-[45%] bg-[#5ca8ee] p-8 md:p-12 overflow-y-auto min-h-[500px]">
-                <h2 className="text-4xl font-extrabold text-white mb-10 tracking-tight">Free Estimate</h2>
-                
-                <form className="space-y-6 text-white/90">
-                  <div className="space-y-1">
-                    <label htmlFor="name" className="block text-sm font-medium">Your name</label>
-                    <input type="text" id="name" name="name" className="w-full px-4 py-3 bg-white text-gray-900 rounded focus:ring-2 focus:ring-primary-blue outline-none" placeholder="" />
-                  </div>
-                  <div className="space-y-1">
-                    <label htmlFor="email" className="block text-sm font-medium">Your email</label>
-                    <input type="email" id="email" name="email" className="w-full px-4 py-3 bg-white text-gray-900 rounded focus:ring-2 focus:ring-primary-blue outline-none" placeholder="" />
-                  </div>
-                  <div className="space-y-1">
-                    <label htmlFor="subject" className="block text-sm font-medium">Subject</label>
-                    <input type="text" id="subject" name="subject" className="w-full px-4 py-3 bg-white text-gray-900 rounded focus:ring-2 focus:ring-primary-blue outline-none" placeholder="" />
-                  </div>
-                  <div className="space-y-1">
-                    <label htmlFor="message" className="block text-sm font-medium">Your message (optional)</label>
-                    <textarea id="message" name="message" rows={4} className="w-full px-4 py-3 bg-white text-gray-900 rounded focus:ring-2 focus:ring-primary-blue outline-none resize-none" placeholder=""></textarea>
-                  </div>
-                  <button type="submit" className="w-full bg-[#1c2237] text-white font-black py-4 rounded hover:bg-[#2a3044] transition-colors uppercase tracking-widest text-sm mt-4">
-                    Submit
-                  </button>
-                </form>
+              {/* HIGH CONVERSION MODAL DESIGN */}
+              
+              {/* Left Column: Sales & Service Selection */}
+              <div className="w-full lg:w-1/2 relative bg-[#111827] overflow-hidden flex flex-col items-center justify-center p-8 md:p-12 text-white">
+                 {/* Background Water/Glow Effect */}
+                 <div className="absolute top-0 right-0 w-64 h-64 bg-accent-cyan/20 blur-[100px] rounded-full -mr-20 -mt-20"></div>
+                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-600/10 blur-[100px] rounded-full -ml-20 -mb-20"></div>
+                 
+                 <div className="relative z-10 w-full max-w-md">
+                    <span className="text-accent-cyan font-bold text-sm tracking-widest uppercase mb-4 block">Select Your Vision</span>
+                    <h2 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight tracking-tight">What are you looking to <span className="text-accent-cyan">build?</span></h2>
+                    
+                    {/* Visual Service Grid */}
+                    <div className="grid grid-cols-2 gap-4">
+                       {[
+                         { id: 'new', title: 'New Pool', icon: '🏊', desc: 'Design & Build' },
+                         { id: 'remodel', title: 'Remodel', icon: '🛠️', desc: 'Renovations' },
+                         { id: 'clean', title: 'Maintenance', icon: '🧹', desc: 'Service Clean' },
+                         { id: 'repair', title: 'Experts Repair', icon: '🔧', desc: 'Equipment Fix' }
+                       ].map((service) => (
+                         <button
+                           key={service.id}
+                           type="button"
+                           onClick={() => setSelectedService(service.id)}
+                           className={`relative p-5 rounded-2xl border-2 transition-all duration-300 text-left group overflow-hidden ${
+                             selectedService === service.id 
+                             ? 'border-accent-cyan bg-accent-cyan/10 shadow-[0_0_20px_rgba(0,212,255,0.2)]' 
+                             : 'border-white/10 bg-white/5 hover:border-white/30'
+                           }`}
+                         >
+                            <span className="text-3xl mb-3 block">{service.icon}</span>
+                            <p className={`font-bold transition-colors ${selectedService === service.id ? 'text-accent-cyan' : 'text-white'}`}>
+                              {service.title}
+                            </p>
+                            <p className="text-xs text-gray-400 mt-1">{service.desc}</p>
+                            {selectedService === service.id && (
+                              <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="absolute bottom-3 right-3 text-accent-cyan">
+                                <CheckCircle2 size={18} />
+                              </motion.div>
+                            )}
+                         </button>
+                       ))}
+                    </div>
+
+                    <div className="mt-10 pt-10 border-t border-white/10">
+                       <div className="flex items-center gap-4 mb-3">
+                          <Logo /> <span className="text-2xl font-black">OSTI</span>
+                       </div>
+                       <p className="text-gray-400 text-sm italic">&quot;Nearly 27 years of excellence in the Coachella Valley.&quot;</p>
+                    </div>
+                 </div>
               </div>
 
-              {/* Right Half - Company Info (Matches User Image) */}
-              <div className="w-full lg:w-[55%] p-10 md:p-16 bg-white overflow-y-auto">
-                <div className="mb-12">
-                   <p className="text-accent-cyan font-bold text-sm tracking-wide mb-3">About the company</p>
-                   <h2 className="text-5xl font-extrabold text-[#111827] mb-8 leading-tight">Ocean Springs Tech, Inc.</h2>
-                   <p className="text-gray-500 leading-relaxed text-lg">
-                      Whether you need new tile or plumbing services for your home pool, or if you want to add a water feature to your business, we are Coachella Valley most trusted company. Ocean Springs Tech is the experts when it comes to pools and water features services.
-                   </p>
-                </div>
+              {/* Right Column: Contact & Lead Capture */}
+              <div className="w-full lg:w-1/2 bg-white flex flex-col justify-between overflow-y-auto">
+                 <div className="p-8 md:p-14">
+                    <div className="mb-8">
+                       <h3 className="text-2xl font-bold text-[#111827] mb-2">Get Your Luxury Quote</h3>
+                       <p className="text-gray-500">Fill in your details and we will reach out within 24 hours.</p>
+                    </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                   <div>
-                      <h3 className="text-2xl font-bold text-[#111827] mb-4">Expert Technicians</h3>
-                      <p className="text-gray-500 leading-relaxed">
-                         Our talented technical team, is a group of experts dedicated on delivering exceptional results. Our team members possess a diverse set of skills and experience.
-                      </p>
-                   </div>
-                   <div>
-                      <h3 className="text-2xl font-bold text-[#111827] mb-4">Complete Project</h3>
-                      <p className="text-gray-500 leading-relaxed">
-                         Whether you need new tile or plumbing services for your home pool, or if you want to add a water feature to your business, we are Coachella Valley most trusted company. 
-                      </p>
-                   </div>
-                </div>
+                    <form className="space-y-4">
+                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="space-y-1">
+                             <label className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Full Name</label>
+                             <input className="w-full px-5 py-3 rounded-xl bg-gray-50 border border-gray-100 focus:border-accent-cyan outline-none transition-all" placeholder="John Doe" />
+                          </div>
+                          <div className="space-y-1">
+                             <label className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Phone Number</label>
+                             <input className="w-full px-5 py-3 rounded-xl bg-gray-50 border border-gray-100 focus:border-accent-cyan outline-none transition-all" placeholder="(760) 000-0000" />
+                          </div>
+                       </div>
+                       <div className="space-y-1">
+                          <label className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Email Address</label>
+                          <input className="w-full px-5 py-3 rounded-xl bg-gray-50 border border-gray-100 focus:border-accent-cyan outline-none transition-all" placeholder="john@example.com" />
+                       </div>
+                       <div className="space-y-1">
+                          <label className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Project Details (Optional)</label>
+                          <textarea rows={3} className="w-full px-5 py-3 rounded-xl bg-gray-50 border border-gray-100 focus:border-accent-cyan outline-none transition-all resize-none" placeholder="Tell us more about your pool project..."></textarea>
+                       </div>
+                       
+                       <button className="w-full bg-[#111827] text-white font-bold py-4 rounded-xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all active:scale-95 flex items-center justify-center gap-2 mt-6">
+                           Request My Free Estimate <ArrowRight size={18} className="text-accent-cyan" />
+                       </button>
+                    </form>
+                 </div>
+
+                 {/* Trust Badges Strip */}
+                 <div className="bg-gray-50 p-6 border-t border-gray-100 grid grid-cols-3 gap-4 text-center">
+                    <div className="flex flex-col items-center">
+                       <ShieldCheck className="h-5 w-5 text-accent-cyan mb-1" />
+                       <span className="text-[10px] font-bold text-gray-600 uppercase">Licensed/Insured</span>
+                    </div>
+                    <div className="flex flex-col items-center border-x border-gray-200">
+                       <Star className="h-5 w-5 text-yellow-500 mb-1" />
+                       <span className="text-[10px] font-bold text-gray-600 uppercase">5-Star Reviews</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                       <Users className="h-5 w-5 text-blue-600 mb-1" />
+                       <span className="text-[10px] font-bold text-gray-600 uppercase">Expert Team</span>
+                    </div>
+                 </div>
               </div>
             </motion.div>
           </div>
