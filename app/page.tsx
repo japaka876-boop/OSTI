@@ -570,24 +570,31 @@ export default function HomePage() {
       {/* FOOTER */}
       <footer id="contact" className="bg-dark-gray text-white pt-24 pb-12">
         <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-sm">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-10 text-sm">
                 <div>
-                    <h3 className="font-heading text-2xl font-bold mb-4 flex items-center gap-2">
-                      <Logo /> OSTI
+                    <h3 className="font-heading text-lg font-bold mb-6 tracking-wide text-gray-200 uppercase flex flex-col items-start gap-1">
+                      About Us
+                      <span className="w-8 h-[2px] bg-accent-cyan"></span>
                     </h3>
-                    <p className="text-gray-400 text-sm mt-4 leading-relaxed pr-4">
-                      OSTI has been the gold standard in the Coachella Valley for close to 27 years. Founded on the principles of tenacity, integrity, and unparalleled customer service, OSTI continues to be the first choice of locals throughout the Valley.
+                    <div className="flex items-center gap-2 mb-4">
+                       <Logo /> <span className="text-xl font-bold">OSTI</span>
+                    </div>
+                    <p className="text-gray-400 text-sm leading-relaxed pr-2">
+                       OSTI has been the gold standard in the Coachella Valley for close to 27 years. Founded on the principles of tenacity, integrity, and unparalleled customer service, OSTI continues to be the first choice of locals throughout the Valley.
                     </p>
-                    <div className="mt-8 flex space-x-5">
-                        <a href="#" aria-label="Facebook" className="text-gray-400 hover:text-accent-cyan transition-colors bg-white/5 p-2 rounded-full"><Facebook className="h-5 w-5" /></a>
-                        <a href="#" aria-label="Twitter" className="text-gray-400 hover:text-accent-cyan transition-colors bg-white/5 p-2 rounded-full"><Twitter className="h-5 w-5" /></a>
-                        <a href="#" aria-label="Instagram" className="text-gray-400 hover:text-accent-cyan transition-colors bg-white/5 p-2 rounded-full"><Instagram className="h-5 w-5" /></a>
-                        <a href="#" aria-label="LinkedIn" className="text-gray-400 hover:text-accent-cyan transition-colors bg-white/5 p-2 rounded-full"><Linkedin className="h-5 w-5" /></a>
+                    <div className="mt-8 flex space-x-3">
+                        <a href="#" aria-label="Facebook" className="text-gray-400 hover:text-accent-cyan transition-colors bg-white/5 p-2 rounded-full"><Facebook className="h-4 w-4" /></a>
+                        <a href="#" aria-label="Twitter" className="text-gray-400 hover:text-accent-cyan transition-colors bg-white/5 p-2 rounded-full"><Twitter className="h-4 w-4" /></a>
+                        <a href="#" aria-label="Instagram" className="text-gray-400 hover:text-accent-cyan transition-colors bg-white/5 p-2 rounded-full"><Instagram className="h-4 w-4" /></a>
+                        <a href="#" aria-label="LinkedIn" className="text-gray-400 hover:text-accent-cyan transition-colors bg-white/5 p-2 rounded-full"><Linkedin className="h-4 w-4" /></a>
                     </div>
                 </div>
                 
                 <div>
-                    <h3 className="font-heading text-lg font-bold mb-6 tracking-wide text-gray-200">Quick Links</h3>
+                    <h3 className="font-heading text-lg font-bold mb-6 tracking-wide text-gray-200 uppercase flex flex-col items-start gap-1">
+                      Quick Links
+                      <span className="w-8 h-[2px] bg-accent-cyan"></span>
+                    </h3>
                     <ul className="space-y-4">
                         <li><a href="#" className="text-gray-400 hover:text-accent-cyan hover:pl-2 transition-all flex items-center"><span className="w-1.5 h-1.5 bg-accent-cyan rounded-full mr-2"></span>Home</a></li>
                         <li><a href="#about" className="text-gray-400 hover:text-accent-cyan hover:pl-2 transition-all flex items-center"><span className="w-1.5 h-1.5 bg-accent-cyan rounded-full mr-2"></span>About Us</a></li>
@@ -596,9 +603,36 @@ export default function HomePage() {
                         <li><a href="#contact" className="text-gray-400 hover:text-accent-cyan hover:pl-2 transition-all flex items-center"><span className="w-1.5 h-1.5 bg-accent-cyan rounded-full mr-2"></span>Contact</a></li>
                     </ul>
                 </div>
+
+                <div>
+                    <h3 className="font-heading text-lg font-bold mb-6 tracking-wide text-gray-200 uppercase flex flex-col items-start gap-1">
+                      Information
+                      <span className="w-8 h-[2px] bg-accent-cyan"></span>
+                    </h3>
+                    <div className="space-y-5 text-gray-400">
+                        <p className="font-medium">Lic. #920435</p>
+                        <div>
+                            <p className="text-white font-bold mb-1">Service hours:</p>
+                            <p className="text-xs">Monday to Friday, 8:00 am - 4:30 pm</p>
+                        </div>
+                        <div>
+                            <p className="text-white font-bold mb-1">Payments:</p>
+                            <p className="text-[10px] mb-3">We Accept, Checks and Credit Cards</p>
+                            <div className="flex flex-wrap gap-2 mt-2">
+                               <div className="bg-white px-2 py-1 rounded text-[#1a1f36] font-black text-[9px] italic border border-gray-200">VISA</div>
+                               <div className="bg-[#eb001b] px-2 py-1 rounded text-white font-bold text-[9px]">mastercard</div>
+                               <div className="bg-white px-2 py-1 rounded text-[#ff6000] font-black text-[9px] border border-gray-200 shadow-sm">DISCOVER</div>
+                               <div className="bg-[#007cbc] px-2 py-1 rounded text-white font-bold text-[9px]">AMEX</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
                 <div>
-                    <h3 className="font-heading text-lg font-bold mb-6 tracking-wide text-gray-200">Contact Us</h3>
+                    <h3 className="font-heading text-lg font-bold mb-6 tracking-wide text-gray-200 uppercase flex flex-col items-start gap-1">
+                      Contact Us
+                      <span className="w-8 h-[2px] bg-accent-cyan"></span>
+                    </h3>
                     <ul className="space-y-5">
                         <li className="flex items-start">
                             <MapPin className="h-5 w-5 mr-4 text-accent-cyan flex-shrink-0 mt-0.5" />
@@ -617,7 +651,7 @@ export default function HomePage() {
                     </ul>
                 </div>
                 
-                 <div className="bg-white/5 p-6 rounded-2xl border border-white/10">
+                 <div className="bg-white/5 p-6 rounded-2xl border border-white/10 shadow-inner">
                     <h3 className="font-heading text-lg font-bold mb-4 text-white">Need a Complete Project?</h3>
                     <p className="text-gray-400 mb-6 leading-relaxed">Ready to start your project? We offer free, no-obligation estimates and financing options.</p>
                     <button className="bg-accent-cyan text-white font-bold py-3 px-6 rounded-lg hover:bg-white hover:text-primary-blue transition-all shadow-md w-full">
@@ -628,22 +662,12 @@ export default function HomePage() {
             </div>
             
             <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
-                {/* Payments & License */}
-                <div className="flex flex-col md:flex-row items-center gap-6">
-                   <div className="flex items-center gap-3">
-                       <span className="text-gray-400 font-medium text-sm mr-2">We Accept:</span>
-                       <div className="bg-white px-3 py-1 rounded text-[#1a1f36] font-black text-xs italic shadow-sm tracking-tighter">VISA</div>
-                       <div className="bg-[#eb001b] px-3 py-1 rounded text-white font-bold text-xs shadow-sm">mastercard</div>
-                       <div className="bg-white px-3 py-1 rounded text-[#ff6000] font-black text-xs shadow-sm tracking-tight border border-gray-200">DISCOVER</div>
-                       <div className="bg-[#007cbc] px-3 py-1 rounded text-white font-bold text-xs shadow-sm">AMEX</div>
-                   </div>
-                   <div className="hidden md:block w-px h-6 bg-white/10"></div>
-                   <div className="text-gray-400 text-sm">Lic. #920435</div>
+                <div className="text-gray-500 text-sm">
+                   &copy; {new Date().getFullYear()} Ocean Springs Tech, Inc. All Rights Reserved.
                 </div>
                 
-                {/* Copyright & Links */}
+                {/* Secondary Links */}
                 <div className="flex flex-col md:items-end gap-2 text-center md:text-right">
-                    <p className="text-gray-500 text-sm">&copy; {new Date().getFullYear()} Ocean Springs Tech, Inc. All Rights Reserved.</p>
                     <div className="flex justify-center md:justify-end gap-4 text-xs text-gray-600">
                       <a href="#" className="hover:text-accent-cyan transition-colors">Privacy Policy</a>
                       <a href="#" className="hover:text-accent-cyan transition-colors">Terms of Service</a>
