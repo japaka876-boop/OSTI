@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin, Star, CreditCard } from 'lucide-react';
+import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin, Star, CreditCard, Menu, X } from 'lucide-react';
 import Logo from '@/components/Logo';
 
 // ... (skipping unchanged code to save space) wait, the tool expects EXACT replacement string.
@@ -86,6 +86,7 @@ const staggerContainer: any = {
 
 export default function HomePage() {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const heroTexts = [
     {
@@ -112,7 +113,7 @@ export default function HomePage() {
   return (
     <div className="bg-white text-dark-gray font-sans overflow-x-hidden">
       {/* PREMIUM HEADER */}
-      <header className="sticky top-0 z-50 flex flex-col w-full">
+      <header className="fixed top-0 left-0 right-0 z-[100] flex flex-col w-full shadow-sm">
         {/* Top Info Bar - Sleek & Thin */}
         <div className="bg-[#0a2540] text-gray-300 text-xs py-1.5 hidden md:block border-b border-light-gray/10">
           <div className="container mx-auto px-6 flex justify-between items-center">
@@ -191,17 +192,66 @@ export default function HomePage() {
                 </nav>
 
                 {/* Glowing Premium CTA Button */}
-                <button className="relative group overflow-hidden bg-gradient-to-r from-primary-blue to-[#0a2540] text-white font-bold py-2.5 px-7 rounded-full transition-all duration-300 shadow-[0_4px_15px_rgba(10,37,64,0.4)] hover:shadow-[0_8px_25px_rgba(0,212,255,0.4)] hover:-translate-y-0.5">
+                <button className="hidden lg:flex relative group overflow-hidden bg-gradient-to-r from-primary-blue to-[#0a2540] text-white font-bold py-2.5 px-7 rounded-full transition-all duration-300 shadow-[0_4px_15px_rgba(10,37,64,0.4)] hover:shadow-[0_8px_25px_rgba(0,212,255,0.4)] hover:-translate-y-0.5">
                     <span className="relative z-10 flex items-center gap-2">
                        Free Estimate <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                     </span>
                     <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-accent-cyan to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
                 </button>
+
+                {/* Mobile Menu Toggle Button */}
+                <button 
+                  className="lg:hidden p-2 text-[#0a2540] hover:text-accent-cyan transition-colors z-[110]"
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                >
+                  {isMobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
+                </button>
             </div>
         </div>
       </header>
 
-      <main>
+      {/* Mobile Slide-out Menu Integration */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
+            className="fixed inset-y-0 right-0 w-full sm:w-80 bg-white shadow-2xl z-[90] flex flex-col pt-32 px-8 pb-8 overflow-y-auto border-l border-gray-100"
+          >
+             <nav className="flex flex-col gap-6 font-semibold text-lg text-[#0a2540]">
+                <a href="#" onClick={() => setIsMobileMenuOpen(false)} className="border-b border-gray-100 pb-3 text-accent-cyan w-full">Home</a>
+                {['Services', 'About Us', 'Portfolio', 'Reviews', 'Contact'].map((item) => (
+                  <a 
+                    key={item} 
+                    href={`#${item.toLowerCase().replace(' ', '-')}`} 
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="border-b border-gray-100 pb-3 hover:text-accent-cyan transition-colors w-full"
+                  >
+                    {item}
+                  </a>
+                ))}
+             </nav>
+             <div className="mt-auto pt-10 flex flex-col gap-5">
+                <a href="https://maps.google.com/maps?q=65145+Two+Bunch+Palms+Trail" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-500 hover:text-accent-cyan transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                  <MapPin size={20} /> Coachella Valley, CA
+                </a>
+                <a href="tel:7603298933" className="flex items-center gap-3 text-gray-500 hover:text-accent-cyan transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Phone size={20} /> (760) 329-8933
+                </a>
+                <a href="mailto:info@oceanspringstech.com" className="flex items-center gap-3 text-gray-500 hover:text-accent-cyan transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Mail size={20} /> Email Us
+                </a>
+                <button className="w-full mt-4 bg-gradient-to-r from-primary-blue to-accent-cyan text-white font-bold py-3.5 rounded-full shadow-[0_4px_15px_rgba(0,212,255,0.4)] hover:shadow-lg transition-all active:scale-95 text-center flex justify-center items-center gap-2">
+                  Get Free Estimate <ArrowRight size={18} />
+                </button>
+             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <main className="pt-[110px] md:pt-[130px]">
         {/* HERO SECTION */}
         <section className="relative h-[80vh] min-h-[600px] text-white overflow-hidden flex items-center">
           <video
