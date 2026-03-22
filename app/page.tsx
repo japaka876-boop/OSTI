@@ -300,39 +300,97 @@ export default function HomePage() {
                 <X size={24} />
               </button>
               
-              <div className="p-8 md:p-14 overflow-y-auto">
-                 <div className="text-center mb-12">
-                    <p className="text-accent-cyan font-semibold tracking-widest uppercase text-sm mb-4 flex items-center justify-center gap-2">
-                       <span className="w-12 h-[1px] bg-accent-cyan"></span> Start your project <span className="w-12 h-[1px] bg-accent-cyan"></span>
-                    </p>
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-[#0a2540] mb-8 tracking-tight">Financing Now!</h2>
-                    <p className="text-gray-500 max-w-3xl mx-auto leading-relaxed text-lg">
-                      Don&apos;t let your project stop! With the financing options offered, you can make that dream come true. Whether you want a small plunge pool or a large pool, these financing solutions can help you build the pool of your dreams without breaking the bank.
-                    </p>
-                 </div>
-
-                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center justify-center">
-                    {/* Partner Cards - Typographic Placeholders using Tailwind */}
-                    {[
-                      { name: 'LYON FINANCIAL', custom: 'font-serif text-[#0a2540] items-center flex gap-2' },
-                      { name: 'HFS', postfix: 'Home Improvement Loans', custom: 'font-sans text-orange-600 font-black tracking-tighter text-3xl' },
-                      { name: 'VIKING', postfix: 'CAPITAL', custom: 'font-serif text-purple-900 tracking-widest uppercase flex flex-col' },
-                      { name: 'LIGHTSTREAM', postfix: 'A Division of SunTrust Bank', custom: 'font-sans font-extrabold italic text-orange-400 flex flex-col' }
-                    ].map((partner, i) => (
-                      <div key={i} className="bg-white rounded-xl p-6 h-36 flex flex-col items-center justify-center border border-gray-200 hover:border-accent-cyan hover:shadow-xl transition-all duration-300 group cursor-pointer grayscale hover:grayscale-0 relative overflow-hidden">
-                         <div className="absolute inset-0 bg-gradient-to-br from-accent-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                         <h3 className={`text-center text-xl relative z-10 ${partner.custom} group-hover:scale-110 transition-transform`}>
-                           {partner.name}
-                           {partner.postfix && <span className="text-[9px] text-gray-400 font-normal tracking-normal mt-1 block uppercase">{partner.postfix}</span>}
-                         </h3>
-                      </div>
-                    ))}
+              {/* PREMIUM FINANCING MODAL DESIGN */}
+              
+              {/* Left Column: Dreams & Lenders */}
+              <div className="w-full lg:w-1/2 relative bg-[#0a2540] overflow-hidden flex flex-col items-center justify-center p-8 md:p-14 text-white">
+                 <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-accent-cyan/40 blur-[120px] rounded-full -mr-48 -mt-48"></div>
+                    <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/30 blur-[120px] rounded-full -ml-48 -mb-48"></div>
                  </div>
                  
-                 <div className="mt-14 text-center">
-                   <button className="bg-gradient-to-r from-primary-blue to-[#0a2540] text-white font-bold py-4 px-12 rounded-full shadow-[0_4px_15px_rgba(10,37,64,0.4)] hover:shadow-[0_8px_30px_rgba(0,212,255,0.5)] hover:-translate-y-1 transition-all text-lg group">
-                     Apply for Financing <ArrowRight className="inline ml-2 group-hover:translate-x-1 transition-transform" />
-                   </button>
+                 <div className="relative z-10 w-full max-w-md">
+                    <div className="flex items-center gap-3 mb-6">
+                       <CreditCard className="text-accent-cyan h-8 w-8" />
+                       <span className="text-accent-cyan font-bold text-sm tracking-widest uppercase">Luxury Financing</span>
+                    </div>
+                    
+                    <h2 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight tracking-tight">Dream Now,<br/><span className="text-accent-cyan">Pay Later.</span></h2>
+                    
+                    <ul className="space-y-6 mb-12">
+                       {[
+                         { icon: <CheckCircle className="text-accent-cyan" />, text: 'Loans up to $200,000 for your dream project' },
+                         { icon: <ShieldCheck className="text-accent-cyan" />, text: 'Fixed rates as low as 4.99% APR' },
+                         { icon: <Users className="text-accent-cyan" />, text: 'No home equity or collateral required' },
+                         { icon: <Star className="text-accent-cyan" />, text: 'Instant pre-qualification in minutes' }
+                       ].map((item, i) => (
+                         <motion.li key={i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 + (i*0.1) }} className="flex items-center gap-4 text-lg">
+                            <span className="flex-shrink-0">{item.icon}</span>
+                            <span className="text-gray-200">{item.text}</span>
+                         </motion.li>
+                       ))}
+                    </ul>
+
+                    <div className="pt-8 border-t border-white/10">
+                       <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-6 px-1">Our Trusted Partners:</p>
+                       <div className="flex flex-wrap gap-6 items-center opacity-60">
+                          <span className="font-serif text-lg">LYON</span>
+                          <span className="font-sans text-xl font-black italic">HFS</span>
+                          <span className="font-serif text-lg tracking-widest">VIKING</span>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+
+              {/* Right Column: Pre-Qualify Form */}
+              <div className="w-full lg:w-1/2 bg-white flex flex-col justify-between overflow-y-auto">
+                 <div className="p-8 md:p-14">
+                    <div className="mb-8">
+                       <h3 className="text-3xl font-bold text-[#111827] mb-3">Pre-Qualify Today</h3>
+                       <p className="text-gray-500">Checking your options will <span className="text-[#111827] font-bold">NOT</span> affect your credit score.</p>
+                    </div>
+
+                    <form className="space-y-4">
+                       <div className="space-y-1">
+                          <label className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">What is your project budget?</label>
+                          <select className="w-full px-5 py-4 rounded-xl bg-gray-50 border border-gray-100 focus:border-accent-cyan outline-none transition-all appearance-none cursor-pointer font-medium text-gray-700">
+                             <option>$10k - $25k</option>
+                             <option>$25k - $50k</option>
+                             <option>$50k - $100k</option>
+                             <option>$100k+</option>
+                          </select>
+                       </div>
+                       <div className="space-y-1">
+                          <label className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Full Name</label>
+                          <input className="w-full px-5 py-3 rounded-xl bg-gray-50 border border-gray-100 focus:border-accent-cyan outline-none transition-all" placeholder="Enter your full name" />
+                       </div>
+                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="space-y-1">
+                             <label className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Phone</label>
+                             <input className="w-full px-5 py-3 rounded-xl bg-gray-50 border border-gray-100 focus:border-accent-cyan outline-none transition-all" placeholder="(760) 000-0000" />
+                          </div>
+                          <div className="space-y-1">
+                             <label className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Email</label>
+                             <input className="w-full px-5 py-3 rounded-xl bg-gray-50 border border-gray-100 focus:border-accent-cyan outline-none transition-all" placeholder="name@email.com" />
+                          </div>
+                       </div>
+                       
+                       <button className="w-full bg-accent-cyan text-white font-black text-lg py-5 rounded-xl shadow-[0_10px_25px_rgba(0,212,255,0.4)] hover:shadow-[0_15px_35px_rgba(0,212,255,0.5)] hover:-translate-y-1 transition-all active:scale-95 flex items-center justify-center gap-2 mt-8">
+                           Check My Financing Options <ArrowRight size={20} />
+                       </button>
+                    </form>
+                 </div>
+
+                 {/* Secure Footer Strip */}
+                 <div className="bg-[#f8fafc] p-6 border-t border-gray-100 flex items-center justify-center gap-8 text-gray-400">
+                    <div className="flex items-center gap-2">
+                       <ShieldCheck size={16} className="text-green-500" />
+                       <span className="text-[10px] font-bold uppercase tracking-wider">Secure 256-bit SSL</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                       <ShieldCheck size={16} className="text-blue-500" />
+                       <span className="text-[10px] font-bold uppercase tracking-wider">No Credit Impact</span>
+                    </div>
                  </div>
               </div>
             </motion.div>
