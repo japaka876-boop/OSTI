@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin, Star, CreditCard, Menu, X } from 'lucide-react';
+import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin, Star, CreditCard, Menu, X, CheckCircle } from 'lucide-react';
 import Logo from '@/components/Logo';
 
 // ... (skipping unchanged code to save space) wait, the tool expects EXACT replacement string.
@@ -111,6 +111,7 @@ export default function HomePage() {
   const [currentWhyUsIndex, setCurrentWhyUsIndex] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isFinancingModalOpen, setIsFinancingModalOpen] = useState(false);
+  const [isEstimateModalOpen, setIsEstimateModalOpen] = useState(false);
 
   useEffect(() => {
     const textInterval = setInterval(() => {
@@ -329,6 +330,88 @@ export default function HomePage() {
         )}
       </AnimatePresence>
 
+      {/* ESTIMATE MODAL */}
+      <AnimatePresence>
+        {isEstimateModalOpen && (
+          <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsEstimateModalOpen(false)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-pointer"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: "spring", duration: 0.5 }}
+              className="relative w-full max-w-6xl bg-white rounded-3xl shadow-2xl overflow-hidden z-10 flex flex-col lg:flex-row max-h-[90vh]"
+            >
+              <button 
+                onClick={() => setIsEstimateModalOpen(false)}
+                className="absolute top-4 right-4 p-2 bg-gray-100 hover:bg-accent-cyan rounded-full text-gray-500 hover:text-white transition-colors z-20"
+              >
+                <X size={24} />
+              </button>
+              
+              {/* Left Half - Form (Matches User Image) */}
+              <div className="w-full lg:w-[45%] bg-[#5ca8ee] p-8 md:p-12 overflow-y-auto min-h-[500px]">
+                <h2 className="text-4xl font-extrabold text-white mb-10 tracking-tight">Free Estimate</h2>
+                
+                <form className="space-y-6 text-white/90">
+                  <div className="space-y-1">
+                    <label htmlFor="name" className="block text-sm font-medium">Your name</label>
+                    <input type="text" id="name" name="name" className="w-full px-4 py-3 bg-white text-gray-900 rounded focus:ring-2 focus:ring-primary-blue outline-none" placeholder="" />
+                  </div>
+                  <div className="space-y-1">
+                    <label htmlFor="email" className="block text-sm font-medium">Your email</label>
+                    <input type="email" id="email" name="email" className="w-full px-4 py-3 bg-white text-gray-900 rounded focus:ring-2 focus:ring-primary-blue outline-none" placeholder="" />
+                  </div>
+                  <div className="space-y-1">
+                    <label htmlFor="subject" className="block text-sm font-medium">Subject</label>
+                    <input type="text" id="subject" name="subject" className="w-full px-4 py-3 bg-white text-gray-900 rounded focus:ring-2 focus:ring-primary-blue outline-none" placeholder="" />
+                  </div>
+                  <div className="space-y-1">
+                    <label htmlFor="message" className="block text-sm font-medium">Your message (optional)</label>
+                    <textarea id="message" name="message" rows={4} className="w-full px-4 py-3 bg-white text-gray-900 rounded focus:ring-2 focus:ring-primary-blue outline-none resize-none" placeholder=""></textarea>
+                  </div>
+                  <button type="submit" className="w-full bg-[#1c2237] text-white font-black py-4 rounded hover:bg-[#2a3044] transition-colors uppercase tracking-widest text-sm mt-4">
+                    Submit
+                  </button>
+                </form>
+              </div>
+
+              {/* Right Half - Company Info (Matches User Image) */}
+              <div className="w-full lg:w-[55%] p-10 md:p-16 bg-white overflow-y-auto">
+                <div className="mb-12">
+                   <p className="text-accent-cyan font-bold text-sm tracking-wide mb-3">About the company</p>
+                   <h2 className="text-5xl font-extrabold text-[#111827] mb-8 leading-tight">Ocean Springs Tech, Inc.</h2>
+                   <p className="text-gray-500 leading-relaxed text-lg">
+                      Whether you need new tile or plumbing services for your home pool, or if you want to add a water feature to your business, we are Coachella Valley most trusted company. Ocean Springs Tech is the experts when it comes to pools and water features services.
+                   </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                   <div>
+                      <h3 className="text-2xl font-bold text-[#111827] mb-4">Expert Technicians</h3>
+                      <p className="text-gray-500 leading-relaxed">
+                         Our talented technical team, is a group of experts dedicated on delivering exceptional results. Our team members possess a diverse set of skills and experience.
+                      </p>
+                   </div>
+                   <div>
+                      <h3 className="text-2xl font-bold text-[#111827] mb-4">Complete Project</h3>
+                      <p className="text-gray-500 leading-relaxed">
+                         Whether you need new tile or plumbing services for your home pool, or if you want to add a water feature to your business, we are Coachella Valley most trusted company. 
+                      </p>
+                   </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
       <main className="pt-[110px] md:pt-[130px]">
         {/* HERO SECTION */}
         <section className="relative h-[80vh] min-h-[600px] text-white overflow-hidden flex items-center">
@@ -376,9 +459,11 @@ export default function HomePage() {
               </div>
               
               <motion.div variants={fadeInUp} className="mt-8 flex flex-col sm:flex-row gap-4">
-                <a href="#contact" className="bg-accent-cyan text-white font-bold py-4 px-8 rounded-lg hover:bg-white hover:text-primary-blue transition-all shadow-[0_0_20px_rgba(0,212,255,0.4)] text-center flex items-center justify-center group">
+                <button 
+                  onClick={() => setIsEstimateModalOpen(true)}
+                  className="bg-accent-cyan text-white font-bold py-4 px-8 rounded-lg hover:bg-white hover:text-primary-blue transition-all shadow-[0_0_20px_rgba(0,212,255,0.4)] text-center flex items-center justify-center group">
                   Get a Free Estimate <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </a>
+                </button>
                 <a href="#portfolio" className="bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-lg hover:bg-white/10 transition-all text-center">
                   View Our Work
                 </a>
@@ -480,7 +565,11 @@ export default function HomePage() {
                                 </motion.li>
                             ))}
                         </ul>
-                        <motion.button variants={fadeInUp} className="bg-accent-cyan text-white font-bold py-4 px-10 rounded-full hover:bg-white hover:text-primary-blue transition-all shadow-[0_4px_20px_rgba(0,212,255,0.3)] transform hover:scale-105">
+                        <motion.button 
+                          variants={fadeInUp} 
+                          onClick={() => setIsEstimateModalOpen(true)}
+                          className="bg-accent-cyan text-white font-bold py-4 px-10 rounded-full hover:bg-white hover:text-primary-blue transition-all shadow-[0_4px_20px_rgba(0,212,255,0.3)] transform hover:scale-105"
+                        >
                             Speak to an Expert Today
                         </motion.button>
                     </motion.div>
@@ -654,7 +743,10 @@ export default function HomePage() {
                  <div className="bg-white/5 p-6 rounded-2xl border border-white/10 shadow-inner">
                     <h3 className="font-heading text-lg font-bold mb-4 text-white">Need a Complete Project?</h3>
                     <p className="text-gray-400 mb-6 leading-relaxed">Ready to start your project? We offer free, no-obligation estimates and financing options.</p>
-                    <button className="bg-accent-cyan text-white font-bold py-3 px-6 rounded-lg hover:bg-white hover:text-primary-blue transition-all shadow-md w-full">
+                    <button 
+                        onClick={() => setIsEstimateModalOpen(true)}
+                        className="bg-accent-cyan text-white font-bold py-3 px-6 rounded-lg hover:bg-white hover:text-primary-blue transition-all shadow-md w-full"
+                    >
                         Request Estimate
                     </button>
                     <p className="text-center text-xs text-gray-500 mt-4">* Fast 24hr guaranteed response</p>
