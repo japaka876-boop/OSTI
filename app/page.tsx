@@ -129,7 +129,7 @@ export default function HomePage() {
               </a>
               <a href="https://maps.google.com/maps?q=65145+Two+Bunch+Palms+Trail" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent-cyan transition-colors cursor-pointer group">
                 <MapPin size={14} className="group-hover:animate-bounce" />
-                <span className="font-medium tracking-wide">65145 Two Bunch Palms Trail</span>
+                <span className="font-medium tracking-wide truncate max-w-[200px] lg:max-w-none">65145 Two Bunch Palms Trail, Coachella Valley, CA</span>
               </a>
             </div>
             <div className="flex items-center tracking-wide text-gray-400 font-medium">
@@ -144,18 +144,6 @@ export default function HomePage() {
                   Financing Available!
                 </span>
               </div>
-              
-              <span className="text-gray-600 mx-3 font-light">|</span> 
-
-              <span className="flex items-center gap-1.5 hover:text-gray-200 transition-colors cursor-default">
-                <ShieldCheck size={14} className="text-gray-500" /> Licensed & Insured
-              </span> 
-              
-              <span className="text-gray-600 mx-3 font-light">|</span> 
-              
-              <span className="flex items-center gap-1.5 hover:text-gray-200 transition-colors cursor-default">
-                <MapPin size={14} className="text-gray-500" /> Coachella Valley, CA
-              </span>
             </div>
           </div>
         </div>
