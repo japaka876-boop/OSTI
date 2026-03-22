@@ -1,9 +1,13 @@
 "use client";
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin, Star } from 'lucide-react';
 import Logo from '@/components/Logo';
+
+// ... (skipping unchanged code to save space) wait, the tool expects EXACT replacement string.
+// Let me use a multi_replace instead or just copy the exact block.
+// Wait, I can just replace the specific lines around the variants declaration.
 
 const services = [
   {
@@ -66,12 +70,12 @@ const whyChooseUsFeatures = [
 ];
 
 // Reusable animation variants
-const fadeInUp = {
+const fadeInUp: any = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
-const staggerContainer = {
+const staggerContainer: any = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
