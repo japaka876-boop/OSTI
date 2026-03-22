@@ -1,9 +1,10 @@
+"use client";
 
 import Image from 'next/image';
-import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin } from 'lucide-react';
-import Logo from '@/components/Logo'; // Import the new Logo component
+import { motion } from 'framer-motion';
+import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin, Star } from 'lucide-react';
+import Logo from '@/components/Logo';
 
-// Replacing all image links with user-provided, verified URLs
 const services = [
   {
     image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=2070&auto=format&fit=crop",
@@ -12,25 +13,24 @@ const services = [
   },
   {
     image: "https://images.unsplash.com/photo-1562673005-7693bd6d6e54?q=80&w=2070&auto=format&fit=crop",
-    title: 'Pool Renovation',
+    title: 'Pool Renovation & Remodels',
     description: 'Transform your existing pool into a modern oasis of relaxation.',
   },
   {
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2070&auto=format&fit=crop",
-    title: 'Pool Maintenance',
+    title: 'Maintenance Services',
     description: 'Keep your pool crystal clear and ready for enjoyment year-round.',
   },
-];
-
-const whyChooseUsFeatures = [
-    'Over 20 years of experience in pool construction and maintenance',
-    'Licensed, insured, and certified professionals',
-    'Custom designs tailored to your lifestyle and budget',
-    'Premium materials and equipment from trusted brands',
-    'Exceptional customer service from start to finish',
-    'Comprehensive warranty on all our work',
-    'Energy-efficient and eco-friendly options available',
-    'Serving Ocean Springs, Biloxi, Gulfport, and surrounding areas',
+  {
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop",
+    title: 'Repairs and Warranty',
+    description: 'Expert repair technicians ensuring your equipment runs flawlessly.',
+  },
+  {
+    image: "https://images.unsplash.com/photo-1520188740392-675e24c5813d?q=80&w=2070&auto=format&fit=crop",
+    title: 'Custom Lighting',
+    description: 'Enhance your outdoor living space with stunning night lighting solutions.',
+  },
 ];
 
 const features = [
@@ -51,66 +51,90 @@ const features = [
   },
   {
     icon: <Gem className="h-12 w-12 text-accent-cyan" />,
-    title: 'Quality Materials',
-    description: 'Only the best materials for a long-lasting, beautiful pool.',
+    title: 'Financing Available',
+    description: 'Flexible payment options to build your dream pool today.',
   },
 ];
 
+const whyChooseUsFeatures = [
+    'Over 20 years of experience in the Coachella Valley',
+    'Licensed, insured, and certified technical team',
+    'Complete project management from design to finish',
+    'Premium materials and equipment from trusted brands',
+    'Exceptional customer service and satisfaction guarantee',
+    'Comprehensive warranty on all our remodeling and repairs',
+];
+
+// Reusable animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2 }
+  }
+};
+
 export default function HomePage() {
   return (
-    <div className="bg-white text-dark-gray font-sans">
+    <div className="bg-white text-dark-gray font-sans overflow-x-hidden">
+      {/* HEADER */}
       <header className="sticky top-0 z-50 shadow-lg">
-        <div className="bg-primary-blue text-white text-sm py-2">
+        <div className="bg-primary-blue text-white text-sm py-2 hidden md:block">
           <div className="container mx-auto px-6 flex justify-between items-center">
             <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 hover:text-accent-cyan transition-colors cursor-pointer">
                 <Phone size={16} />
                 <span>(228) 555-2500</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 hover:text-accent-cyan transition-colors cursor-pointer">
                 <Mail size={16} />
                 <span>info@oceanspringstech.com</span>
               </div>
             </div>
             <div>
-              <span>Licensed & Insured | Serving Ocean Springs & Beyond</span>
+              <span className="font-semibold text-accent-cyan">Financing Available!</span> | Licensed & Insured | Coachella Valley, CA
             </div>
           </div>
         </div>
 
         <div className="bg-white text-dark-gray py-4">
             <div className="container mx-auto px-6 flex justify-between items-center">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3 cursor-pointer">
                     <Logo />
                     <Image
                       src="/logo-mascota.avif"
                       alt="Mascota de Ocean Springs Tech"
-                      width={70}
-                      height={70}
+                      width={55}
+                      height={55}
                       priority
+                      className="rounded-full shadow-sm"
                     />
                 </div>
 
-                <nav className="hidden md:flex items-center space-x-5 font-medium">
-                    <a href="#" className="bg-primary-blue text-white px-4 py-2 rounded-md shadow-sm text-base">Home</a>
-                    <a href="#about" className="hover:text-accent-cyan transition-colors">About</a>
+                <nav className="hidden lg:flex items-center space-x-6 font-medium">
+                    <a href="#" className="text-primary-blue font-bold border-b-2 border-accent-cyan pb-1">Home</a>
                     <a href="#services" className="hover:text-accent-cyan transition-colors">Services</a>
-                    <a href="#gallery" className="hover:text-accent-cyan transition-colors">Gallery</a>
-                    <a href="#blog" className="hover:text-accent-cyan transition-colors">Blog</a>
-                    <a href="#faq" className="hover:text-accent-cyan transition-colors">FAQ</a>
+                    <a href="#about" className="hover:text-accent-cyan transition-colors">About Us</a>
+                    <a href="#portfolio" className="hover:text-accent-cyan transition-colors">Portfolio</a>
                     <a href="#reviews" className="hover:text-accent-cyan transition-colors">Reviews</a>
                     <a href="#contact" className="hover:text-accent-cyan transition-colors">Contact</a>
                 </nav>
 
-                <button className="bg-accent-cyan text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-all shadow-md">
-                    Get a Quote
+                <button className="bg-accent-cyan text-white font-bold py-2.5 px-6 rounded-lg hover:bg-primary-blue transition-all shadow-md transform hover:scale-105 active:scale-95">
+                    Free Estimate
                 </button>
             </div>
         </div>
       </header>
 
       <main>
-        <section className="relative h-[600px] text-white overflow-hidden">
+        {/* HERO SECTION */}
+        <section className="relative h-[80vh] min-h-[600px] text-white overflow-hidden flex items-center">
           <video
             autoPlay
             loop
@@ -121,142 +145,223 @@ export default function HomePage() {
              <source src="/hero-background1.mp4" type="video/mp4" />
              Your browser does not support the video tag.
           </video>
-          <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
-          <div className="container mx-auto px-6 relative z-20 h-full flex flex-col justify-center items-center text-center">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight">Building Your Personal Oasis</h1>
-            <p className="mt-4 text-lg md:text-xl max-w-3xl">Where luxury meets tranquility, we create the backyard of your dreams.</p>
-            <div className="mt-8">
-              <a href="#contact" className="bg-accent-cyan text-white font-bold py-3 px-8 rounded-lg hover:bg-opacity-90 transition-all shadow-lg inline-flex items-center">
-                Get a Free Estimate <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
-            </div>
+          
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a2540]/90 to-black/40 z-10"></div>
+          
+          <div className="container mx-auto px-6 relative z-20">
+            <motion.div 
+              initial="hidden" 
+              animate="visible" 
+              variants={staggerContainer}
+              className="max-w-3xl"
+            >
+              <motion.div variants={fadeInUp} className="inline-block bg-accent-cyan/20 border border-accent-cyan text-accent-cyan font-semibold px-4 py-1.5 rounded-full mb-6">
+                Coachella Valley&#39;s Most Trusted Pool Company
+              </motion.div>
+              
+              <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
+                Enhance Your <span className="text-accent-cyan">Outdoor</span> Living Space
+              </motion.h1>
+              
+              <motion.p variants={fadeInUp} className="mt-6 text-lg md:text-xl text-gray-200">
+                From luxury new construction to expert maintenance and lighting, we deliver exceptional results to transform your backyard into a personal oasis.
+              </motion.p>
+              
+              <motion.div variants={fadeInUp} className="mt-10 flex flex-col sm:flex-row gap-4">
+                <a href="#contact" className="bg-accent-cyan text-white font-bold py-4 px-8 rounded-lg hover:bg-white hover:text-primary-blue transition-all shadow-[0_0_20px_rgba(0,212,255,0.4)] text-center flex items-center justify-center group">
+                  Get a Free Estimate <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+                <a href="#portfolio" className="bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-lg hover:bg-white/10 transition-all text-center">
+                  View Our Work
+                </a>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
 
-        <section className="py-20 bg-white">
+        {/* TRUST SIGNALS (Features) */}
+        <section className="py-16 bg-white relative -mt-10 z-30">
             <div className="container mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                    {features.map((feature) => (
-                        <div key={feature.title} className="p-6">
-                            {feature.icon}
-                            <h3 className="text-xl font-bold mt-4 text-primary-blue">{feature.title}</h3>
-                            <p className="text-medium-gray mt-2">{feature.description}</p>
-                        </div>
+                <motion.div 
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-100px" }}
+                  variants={staggerContainer}
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center shadow-2xl rounded-2xl bg-white p-8 border border-gray-100"
+                >
+                    {features.map((feature, idx) => (
+                        <motion.div key={feature.title} variants={fadeInUp} className="p-4 group">
+                            <div className="mx-auto w-max mb-4 group-hover:scale-110 transition-transform duration-300">
+                              {feature.icon}
+                            </div>
+                            <h3 className="text-xl font-bold text-primary-blue">{feature.title}</h3>
+                            <p className="text-medium-gray mt-2 text-sm">{feature.description}</p>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
 
+        {/* SERVICES SECTION */}
         <section id="services" className="py-24 bg-light-gray">
           <div className="container mx-auto px-6 text-center">
-            <h2 className="text-4xl font-heading font-bold text-primary-blue">Our Services</h2>
-            <p className="mt-2 text-lg text-medium-gray max-w-3xl mx-auto">Comprehensive pool solutions tailored to your needs</p>
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10">
-              {services.map((service) => (
-                <div key={service.title} className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 group">
-                    <div className="relative w-full h-64 overflow-hidden">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+              <h2 className="text-4xl font-heading font-bold text-primary-blue">Complete Project Solutions</h2>
+              <p className="mt-4 text-lg text-medium-gray max-w-2xl mx-auto">
+                We handle every aspect of your pool&#39;s lifecycle with expert technicians and premium materials.
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              initial="hidden" 
+              whileInView="visible" 
+              viewport={{ once: true }} 
+              variants={staggerContainer}
+              className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {services.map((service, idx) => (
+                <motion.div key={service.title} variants={fadeInUp} className="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group border border-gray-100 pb-6">
+                    <div className="relative w-full h-56 overflow-hidden">
                         <Image 
                             src={service.image} 
                             alt={service.title} 
                             fill 
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            className="object-cover group-hover:scale-105 transition-transform duration-300" 
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                            className="object-cover group-hover:scale-110 transition-transform duration-700" 
                         />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <h3 className="absolute bottom-4 left-6 text-2xl font-bold text-white shadow-sm">{service.title}</h3>
                     </div>
-                  <div className="p-8 text-left">
-                    <h3 className="text-2xl font-heading font-bold mb-3 text-primary-blue">{service.title}</h3>
-                    <p className="text-medium-gray mb-6">{service.description}</p>
-                    <a href="#" className="text-accent-cyan font-bold hover:underline flex items-center">
-                        Learn More <ArrowRight className="ml-2 h-5 w-5" />
+                  <div className="p-6 text-left">
+                    <p className="text-medium-gray mb-6 h-12">{service.description}</p>
+                    <a href="#" className="text-accent-cyan font-bold hover:text-primary-blue transition-colors flex items-center group/link">
+                        Explore Service <ArrowRight className="ml-2 h-4 w-4 group-hover/link:translate-x-1 transition-transform" />
                     </a>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
-        <section id="why-choose-us" className="py-24 bg-primary-blue text-white">
-            <div className="container mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <h2 className="text-4xl font-heading font-bold mb-8">Why Choose Ocean Springs Tech?</h2>
-                        <ul className="space-y-5">
-                            {whyChooseUsFeatures.map((feature) => (
-                                <li key={feature} className="flex items-center">
-                                    <Check className="h-7 w-7 text-accent-cyan mr-4 flex-shrink-0" />
-                                    <span className="text-lg">{feature}</span>
-                                </li>
+        {/* WHY CHOOSE US & LEAD CAPTURE INFO */}
+        <section id="about" className="py-24 bg-primary-blue text-white overflow-hidden relative">
+            <div className="absolute -right-20 -top-20 opacity-5 w-96 h-96 rounded-full bg-white blur-3xl"></div>
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+                        <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-heading font-bold mb-6 leading-tight">
+                          Why Choose <span className="text-accent-cyan">Ocean Springs Tech?</span>
+                        </motion.h2>
+                        <motion.p variants={fadeInUp} className="text-gray-300 mb-8 text-lg">
+                          Whether you need new tile or plumbing services for your home pool, or if you want to add a water feature to your business, our talented technical team is dedicated to delivering exceptional results.
+                        </motion.p>
+                        
+                        <ul className="space-y-4 mb-10">
+                            {whyChooseUsFeatures.map((feature, idx) => (
+                                <motion.li key={feature} variants={fadeInUp} className="flex items-center bg-white/5 p-3 rounded-lg border border-white/10 hover:bg-white/10 transition-colors">
+                                    <Check className="h-6 w-6 text-accent-cyan mr-4 flex-shrink-0" />
+                                    <span className="text-base text-gray-100">{feature}</span>
+                                </motion.li>
                             ))}
                         </ul>
-                        <button className="mt-10 bg-accent-cyan text-white font-bold py-4 px-10 rounded-full hover:bg-opacity-90 transition-all shadow-lg transform hover:scale-105">
-                            Discover the OSTI Difference
-                        </button>
-                    </div>
-                    <div className="relative w-full h-96 md:h-[600px] rounded-xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                        <motion.button variants={fadeInUp} className="bg-accent-cyan text-white font-bold py-4 px-10 rounded-full hover:bg-white hover:text-primary-blue transition-all shadow-[0_4px_20px_rgba(0,212,255,0.3)] transform hover:scale-105">
+                            Speak to an Expert Today
+                        </motion.button>
+                    </motion.div>
+                    
+                    <motion.div 
+                      initial={{ opacity: 0, scale: 0.9 }} 
+                      whileInView={{ opacity: 1, scale: 1 }} 
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.7 }}
+                      className="relative w-full h-[500px] lg:h-[700px] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-4 border-white/10"
+                    >
                          <Image 
                             src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop" 
-                            alt="Stunning modern pool with luxurious amenities" 
+                            alt="Stunning modern pool with luxurious amenities in Coachella Valley" 
                             fill 
-                            sizes="(max-width: 768px) 100vw, 50vw" 
+                            sizes="(max-width: 1024px) 100vw, 50vw" 
                             className="object-cover" 
                         />
-                    </div>
+                        {/* Overlay Badge */}
+                        <div className="absolute bottom-8 right-8 bg-white text-primary-blue p-4 rounded-xl shadow-2xl flex items-center gap-4">
+                           <div className="bg-accent-cyan/20 p-3 rounded-full">
+                             <Star className="text-accent-cyan fill-accent-cyan h-8 w-8" />
+                           </div>
+                           <div>
+                             <p className="font-bold text-xl">5.0 / 5.0</p>
+                             <p className="text-sm font-medium text-medium-gray">Google Reviews</p>
+                           </div>
+                        </div>
+                    </motion.div>
                 </div>
             </div>
         </section>
       </main>
 
-      <footer id="contact" className="bg-dark-gray text-white pt-20 pb-10">
+      {/* FOOTER */}
+      <footer id="contact" className="bg-dark-gray text-white pt-24 pb-12">
         <div className="container mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-sm">
                 <div>
-                    <h3 className="font-heading text-2xl font-bold mb-4">Ocean Springs Tech Inc.</h3>
-                    <p className="text-medium-gray max-w-xs">Building the backyard oasis of your dreams, where luxury meets tranquility.</p>
-                    <div className="mt-6 flex space-x-4">
-                        <a href="#" aria-label="Facebook" className="text-medium-gray hover:text-accent-cyan transition-colors"><Facebook className="h-6 w-6" /></a>
-                        <a href="#" aria-label="Twitter" className="text-medium-gray hover:text-accent-cyan transition-colors"><Twitter className="h-6 w-6" /></a>
-                        <a href="#" aria-label="Instagram" className="text-medium-gray hover:text-accent-cyan transition-colors"><Instagram className="h-6 w-6" /></a>
-                        <a href="#" aria-label="LinkedIn" className="text-medium-gray hover:text-accent-cyan transition-colors"><Linkedin className="h-6 w-6" /></a>
+                    <h3 className="font-heading text-2xl font-bold mb-4 flex items-center gap-2">
+                      <Logo /> OSTI
+                    </h3>
+                    <p className="text-gray-400 max-w-xs mt-4">Building the backyard oasis of your dreams in Coachella Valley, where luxury meets tranquility.</p>
+                    <div className="mt-8 flex space-x-5">
+                        <a href="#" aria-label="Facebook" className="text-gray-400 hover:text-accent-cyan transition-colors bg-white/5 p-2 rounded-full"><Facebook className="h-5 w-5" /></a>
+                        <a href="#" aria-label="Twitter" className="text-gray-400 hover:text-accent-cyan transition-colors bg-white/5 p-2 rounded-full"><Twitter className="h-5 w-5" /></a>
+                        <a href="#" aria-label="Instagram" className="text-gray-400 hover:text-accent-cyan transition-colors bg-white/5 p-2 rounded-full"><Instagram className="h-5 w-5" /></a>
+                        <a href="#" aria-label="LinkedIn" className="text-gray-400 hover:text-accent-cyan transition-colors bg-white/5 p-2 rounded-full"><Linkedin className="h-5 w-5" /></a>
                     </div>
                 </div>
+                
                 <div>
-                    <h3 className="font-heading text-xl font-bold mb-4 tracking-wider">Sitemap</h3>
-                    <ul className="space-y-3">
-                        <li><a href="#" className="text-medium-gray hover:text-accent-cyan transition-colors">Home</a></li>
-                        <li><a href="#about" className="text-medium-gray hover:text-accent-cyan transition-colors">About Us</a></li>
-                        <li><a href="#services" className="text-medium-gray hover:text-accent-cyan transition-colors">Services</a></li>
-                        <li><a href="#gallery" className="text-medium-gray hover:text-accent-cyan transition-colors">Gallery</a></li>
-                        <li><a href="#contact" className="text-medium-gray hover:text-accent-cyan transition-colors">Contact</a></li>
+                    <h3 className="font-heading text-lg font-bold mb-6 tracking-wide text-gray-200">Quick Links</h3>
+                    <ul className="space-y-4">
+                        <li><a href="#" className="text-gray-400 hover:text-accent-cyan hover:pl-2 transition-all flex items-center"><span className="w-1.5 h-1.5 bg-accent-cyan rounded-full mr-2"></span>Home</a></li>
+                        <li><a href="#about" className="text-gray-400 hover:text-accent-cyan hover:pl-2 transition-all flex items-center"><span className="w-1.5 h-1.5 bg-accent-cyan rounded-full mr-2"></span>About Us</a></li>
+                        <li><a href="#services" className="text-gray-400 hover:text-accent-cyan hover:pl-2 transition-all flex items-center"><span className="w-1.5 h-1.5 bg-accent-cyan rounded-full mr-2"></span>Services</a></li>
+                        <li><a href="#portfolio" className="text-gray-400 hover:text-accent-cyan hover:pl-2 transition-all flex items-center"><span className="w-1.5 h-1.5 bg-accent-cyan rounded-full mr-2"></span>Portfolio</a></li>
+                        <li><a href="#contact" className="text-gray-400 hover:text-accent-cyan hover:pl-2 transition-all flex items-center"><span className="w-1.5 h-1.5 bg-accent-cyan rounded-full mr-2"></span>Contact</a></li>
                     </ul>
                 </div>
+                
                 <div>
-                    <h3 className="font-heading text-xl font-bold mb-4 tracking-wider">Contact Us</h3>
-                    <ul className="space-y-3">
+                    <h3 className="font-heading text-lg font-bold mb-6 tracking-wide text-gray-200">Contact Us</h3>
+                    <ul className="space-y-5">
                         <li className="flex items-start">
-                            <MapPin className="h-5 w-5 mr-3 text-accent-cyan flex-shrink-0 mt-1" />
-                            <span className="text-medium-gray">123 Poolside Drive,<br />Ocean Springs, MS 39564</span>
+                            <MapPin className="h-5 w-5 mr-4 text-accent-cyan flex-shrink-0 mt-0.5" />
+                            <span className="text-gray-400">Coachella Valley,<br />California, USA</span>
                         </li>
-                        <li className="flex items-center">
-                            <Phone className="h-5 w-5 mr-3 text-accent-cyan flex-shrink-0" />
-                            <a href="tel:2285552500" className="text-medium-gray hover:text-accent-cyan transition-colors">(228) 555-2500</a>
+                        <li className="flex items-center border-t border-white/5 pt-4">
+                            <Phone className="h-5 w-5 mr-4 text-accent-cyan flex-shrink-0" />
+                            <a href="tel:2285552500" className="text-gray-400 hover:text-accent-cyan transition-colors font-medium">(228) 555-2500</a>
                         </li>
-                        <li className="flex items-center">
-                            <Mail className="h-5 w-5 mr-3 text-accent-cyan flex-shrink-0" />
-                            <a href="mailto:info@oceanspringstech.com" className="text-medium-gray hover:text-accent-cyan transition-colors">info@oceanspringstech.com</a>
+                        <li className="flex items-center border-t border-white/5 pt-4">
+                            <Mail className="h-5 w-5 mr-4 text-accent-cyan flex-shrink-0" />
+                            <a href="mailto:info@oceanspringstech.com" className="text-gray-400 hover:text-accent-cyan transition-colors">info@oceanspringstech.com</a>
                         </li>
                     </ul>
                 </div>
-                 <div>
-                    <h3 className="font-heading text-xl font-bold mb-4 tracking-wider">Get a Free Quote</h3>
-                    <p className="text-medium-gray mb-4">Ready to start your project? We offer free, no-obligation estimates.</p>
-                    <button className="bg-accent-cyan text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-all shadow-md w-full">
+                
+                 <div className="bg-white/5 p-6 rounded-2xl border border-white/10">
+                    <h3 className="font-heading text-lg font-bold mb-4 text-white">Need a Complete Project?</h3>
+                    <p className="text-gray-400 mb-6 leading-relaxed">Ready to start your project? We offer free, no-obligation estimates and financing options.</p>
+                    <button className="bg-accent-cyan text-white font-bold py-3 px-6 rounded-lg hover:bg-white hover:text-primary-blue transition-all shadow-md w-full">
                         Request Estimate
                     </button>
+                    <p className="text-center text-xs text-gray-500 mt-4">* Fast 24hr guaranteed response</p>
                 </div>
             </div>
-            <div className="mt-16 pt-8 border-t border-gray-700 text-center text-medium-gray text-xs">
-                <p>&copy; {new Date().getFullYear()} Ocean Springs Tech Inc. All Rights Reserved. Site by OSTI-AI.</p>
+            
+            <div className="mt-20 pt-8 border-t border-white/10 text-center flex flex-col md:flex-row justify-between items-center gap-4">
+                <p className="text-gray-500 text-sm">&copy; {new Date().getFullYear()} Ocean Springs Tech, Inc. All Rights Reserved.</p>
+                <div className="flex gap-4 text-sm text-gray-500">
+                  <a href="#" className="hover:text-accent-cyan transition-colors">Privacy Policy</a>
+                  <a href="#" className="hover:text-accent-cyan transition-colors">Terms of Service</a>
+                </div>
             </div>
         </div>
       </footer>
