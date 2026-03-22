@@ -138,17 +138,17 @@ export default function HomePage() {
         <div className="bg-white/85 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.05)] border-b border-white/20 py-3 transition-all duration-300">
             <div className="container mx-auto px-6 flex justify-between items-center">
                 {/* Logo Area */}
-                <div className="flex items-center gap-4 cursor-pointer group">
-                    <div className="relative">
+                <div className="flex items-center gap-5 cursor-pointer group">
+                    <div className="relative flex items-center justify-center">
+                      <div className="absolute -inset-3 bg-gradient-to-tr from-primary-blue via-accent-cyan to-white rounded-full blur-md opacity-50 group-hover:opacity-100 group-hover:animate-pulse transition-all duration-500 -z-10"></div>
                       <Image
                         src="/logo-mascota.avif"
                         alt="OSTI Mascot"
-                        width={45}
-                        height={45}
+                        width={70}
+                        height={70}
                         priority
-                        className="rounded-full shadow-lg border-2 border-white group-hover:scale-105 transition-transform duration-300"
+                        className="rounded-full shadow-[0_0_25px_rgba(0,212,255,0.4)] border-[3px] border-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 relative z-10"
                       />
-                      <div className="absolute -inset-1 bg-gradient-to-tr from-accent-cyan to-primary-blue rounded-full blur opacity-30 group-hover:opacity-60 transition-opacity duration-300 -z-10"></div>
                     </div>
                     <div className="hidden sm:block">
                       <Logo />
