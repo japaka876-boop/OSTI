@@ -111,51 +111,70 @@ export default function HomePage() {
 
   return (
     <div className="bg-white text-dark-gray font-sans overflow-x-hidden">
-      {/* HEADER */}
-      <header className="sticky top-0 z-50 shadow-lg">
-        <div className="bg-primary-blue text-white text-sm py-2 hidden md:block">
+      {/* PREMIUM HEADER */}
+      <header className="sticky top-0 z-50 flex flex-col w-full">
+        {/* Top Info Bar - Sleek & Thin */}
+        <div className="bg-[#0a2540] text-gray-300 text-xs py-1.5 hidden md:block border-b border-light-gray/10">
           <div className="container mx-auto px-6 flex justify-between items-center">
             <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2 hover:text-accent-cyan transition-colors cursor-pointer">
-                <Phone size={16} />
-                <span>(228) 555-2500</span>
-              </div>
-              <div className="flex items-center gap-2 hover:text-accent-cyan transition-colors cursor-pointer">
-                <Mail size={16} />
-                <span>info@oceanspringstech.com</span>
-              </div>
+              <a href="tel:2285552500" className="flex items-center gap-2 hover:text-accent-cyan transition-colors cursor-pointer group">
+                <Phone size={14} className="group-hover:animate-pulse" />
+                <span className="font-medium tracking-wide">(228) 555-2500</span>
+              </a>
+              <a href="mailto:info@oceanspringstech.com" className="flex items-center gap-2 hover:text-accent-cyan transition-colors cursor-pointer group">
+                <Mail size={14} />
+                <span className="font-medium tracking-wide">info@oceanspringstech.com</span>
+              </a>
             </div>
-            <div>
-              <span className="font-semibold text-accent-cyan">Financing Available!</span> | Licensed & Insured | Coachella Valley, CA
+            <div className="tracking-wide">
+              <span className="font-bold text-accent-cyan">Financing Available!</span> <span className="text-gray-500 mx-2">|</span> 
+              <span>Licensed & Insured</span> <span className="text-gray-500 mx-2">|</span> 
+              <span>Coachella Valley, CA</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-white text-dark-gray py-4">
+        {/* Main Navigation - Glassmorphism */}
+        <div className="bg-white/85 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.05)] border-b border-white/20 py-3 transition-all duration-300">
             <div className="container mx-auto px-6 flex justify-between items-center">
-                <div className="flex items-center gap-3 cursor-pointer">
-                    <Logo />
-                    <Image
-                      src="/logo-mascota.avif"
-                      alt="Mascota de Ocean Springs Tech"
-                      width={55}
-                      height={55}
-                      priority
-                      className="rounded-full shadow-sm"
-                    />
+                {/* Logo Area */}
+                <div className="flex items-center gap-4 cursor-pointer group">
+                    <div className="relative">
+                      <Image
+                        src="/logo-mascota.avif"
+                        alt="OSTI Mascot"
+                        width={45}
+                        height={45}
+                        priority
+                        className="rounded-full shadow-lg border-2 border-white group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute -inset-1 bg-gradient-to-tr from-accent-cyan to-primary-blue rounded-full blur opacity-30 group-hover:opacity-60 transition-opacity duration-300 -z-10"></div>
+                    </div>
+                    <div className="hidden sm:block">
+                      <Logo />
+                    </div>
                 </div>
 
-                <nav className="hidden lg:flex items-center space-x-6 font-medium">
-                    <a href="#" className="text-primary-blue font-bold border-b-2 border-accent-cyan pb-1">Home</a>
-                    <a href="#services" className="hover:text-accent-cyan transition-colors">Services</a>
-                    <a href="#about" className="hover:text-accent-cyan transition-colors">About Us</a>
-                    <a href="#portfolio" className="hover:text-accent-cyan transition-colors">Portfolio</a>
-                    <a href="#reviews" className="hover:text-accent-cyan transition-colors">Reviews</a>
-                    <a href="#contact" className="hover:text-accent-cyan transition-colors">Contact</a>
+                {/* Nav Links with Animated Underlines */}
+                <nav className="hidden lg:flex items-center space-x-8 font-semibold text-sm tracking-wide text-[#0a2540]">
+                    <a href="#" className="relative group text-accent-cyan">
+                      Home
+                      <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-accent-cyan rounded-full"></span>
+                    </a>
+                    {['Services', 'About Us', 'Portfolio', 'Reviews', 'Contact'].map((item) => (
+                      <a key={item} href={`#${item.toLowerCase().replace(' ', '-')}`} className="relative group hover:text-accent-cyan transition-colors duration-300">
+                        {item}
+                        <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-accent-cyan rounded-full transition-all duration-300 group-hover:w-full"></span>
+                      </a>
+                    ))}
                 </nav>
 
-                <button className="bg-accent-cyan text-white font-bold py-2.5 px-6 rounded-lg hover:bg-primary-blue transition-all shadow-md transform hover:scale-105 active:scale-95">
-                    Free Estimate
+                {/* Glowing Premium CTA Button */}
+                <button className="relative group overflow-hidden bg-gradient-to-r from-primary-blue to-[#0a2540] text-white font-bold py-2.5 px-7 rounded-full transition-all duration-300 shadow-[0_4px_15px_rgba(10,37,64,0.4)] hover:shadow-[0_8px_25px_rgba(0,212,255,0.4)] hover:-translate-y-0.5">
+                    <span className="relative z-10 flex items-center gap-2">
+                       Free Estimate <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    </span>
+                    <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-accent-cyan to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
                 </button>
             </div>
         </div>

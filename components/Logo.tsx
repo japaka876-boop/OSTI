@@ -1,36 +1,34 @@
-
 export default function Logo() {
   return (
-    <svg width="290" height="60" viewBox="0 0 290 60" xmlns="http://www.w3.org/2000/svg">
+    <svg width="220" height="50" viewBox="0 0 220 50" xmlns="http://www.w3.org/2000/svg" className="transform transition-transform hover:scale-105 duration-300">
       <defs>
-        <linearGradient id="logo-gradient" x1="0%" y1="50%" x2="100%" y2="50%">
+        <linearGradient id="logo-text-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#0a2540" />
           <stop offset="100%" stopColor="#00d4ff" />
         </linearGradient>
       </defs>
-      <rect width="290" height="60" rx="10" ry="10" fill="url(#logo-gradient)" />
       <text
-        x="50%"
-        y="30"
+        x="0"
+        y="24"
         dominantBaseline="middle"
-        textAnchor="middle"
-        fill="white"
-        fontSize="20"
-        fontWeight="bold"
-        fontFamily="sans-serif"
+        fill="url(#logo-text-gradient)"
+        fontSize="24"
+        fontWeight="800"
+        fontFamily="system-ui, -apple-system, sans-serif"
+        letterSpacing="-0.5"
       >
-        Ocean Springs Tech Inc
+        Ocean Springs
       </text>
       <text
-        x="50%"
-        y="48"
-        dominantBaseline="middle"
-        textAnchor="middle"
-        fill="white"
-        fontSize="12"
-        fontFamily="sans-serif"
+        x="2"
+        y="42"
+        fill="#64748b" /* Slate 500 */
+        fontSize="11"
+        fontWeight="700"
+        fontFamily="system-ui, -apple-system, sans-serif"
+        letterSpacing="2.5"
       >
-        Pool Construction & Maintenance
+        TECH INC
       </text>
     </svg>
   );
