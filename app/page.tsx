@@ -291,7 +291,7 @@ export default function HomePage() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", duration: 0.5 }}
-              className="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden z-10 flex flex-col lg:flex-row max-h-[90vh]"
+              className="relative w-full max-w-6xl bg-white rounded-3xl shadow-2xl overflow-hidden z-10 flex flex-col lg:flex-row max-h-[90vh]"
             >
               <button 
                 onClick={() => setIsFinancingModalOpen(false)}
@@ -303,7 +303,7 @@ export default function HomePage() {
               {/* PREMIUM FINANCING MODAL DESIGN */}
               
               {/* Left Column: Dreams & Lenders */}
-              <div className="w-full lg:w-1/2 relative bg-[#0a2540] overflow-hidden flex flex-col items-center justify-center p-8 md:p-14 text-white">
+              <div className="w-full lg:w-1/2 relative bg-[#0a2540] overflow-hidden flex flex-col items-center justify-center p-6 md:p-10 text-white">
                  <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
                     <div className="absolute top-0 right-0 w-96 h-96 bg-accent-cyan/40 blur-[120px] rounded-full -mr-48 -mt-48"></div>
                     <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/30 blur-[120px] rounded-full -ml-48 -mb-48"></div>
@@ -344,7 +344,7 @@ export default function HomePage() {
 
               {/* Right Column: Pre-Qualify Form */}
               <div className="w-full lg:w-1/2 bg-white flex flex-col justify-between overflow-y-auto">
-                 <div className="p-8 md:p-14">
+                 <div className="p-6 md:p-10">
                     <div className="mb-8">
                        <h3 className="text-3xl font-bold text-[#111827] mb-3">Pre-Qualify Today</h3>
                        <p className="text-gray-500">Checking your options will <span className="text-[#111827] font-bold">NOT</span> affect your credit score.</p>
