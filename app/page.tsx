@@ -1,7 +1,8 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { motion, Variants } from 'framer-motion';
+import { motion, Variants, AnimatePresence } from 'framer-motion';
 import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin, Star } from 'lucide-react';
 import Logo from '@/components/Logo';
 
@@ -84,6 +85,30 @@ const staggerContainer: any = {
 };
 
 export default function HomePage() {
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+
+  const heroTexts = [
+    {
+      title: <>Build your dream <br className="hidden md:block"/><span className="text-accent-cyan">Swimming Pool</span></>,
+      subtitle: "From luxury new construction to expert maintenance and lighting."
+    },
+    {
+      title: <>Where the desert <br className="hidden md:block"/><span className="text-accent-cyan">Meets the springs</span></>,
+      subtitle: "Transforming your Coachella Valley backyard into a personal oasis."
+    },
+    {
+      title: <>Enhance Your <br className="hidden md:block"/><span className="text-accent-cyan">Outdoor Living</span> Space</>,
+      subtitle: "The most trusted pool experts. Financing available today."
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTextIndex((prev) => (prev + 1) % heroTexts.length);
+    }, 4500); // Cambia cada 4.5 segundos
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="bg-white text-dark-gray font-sans overflow-x-hidden">
       {/* HEADER */}
@@ -159,19 +184,30 @@ export default function HomePage() {
               variants={staggerContainer}
               className="max-w-3xl"
             >
-              <motion.div variants={fadeInUp} className="inline-block bg-accent-cyan/20 border border-accent-cyan text-accent-cyan font-semibold px-4 py-1.5 rounded-full mb-6">
+              <motion.div variants={fadeInUp} className="inline-block bg-accent-cyan/20 border border-accent-cyan text-accent-cyan font-semibold px-4 py-1.5 rounded-full mb-8">
                 Coachella Valley&#39;s Most Trusted Pool Company
               </motion.div>
               
-              <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
-                Enhance Your <span className="text-accent-cyan">Outdoor</span> Living Space
-              </motion.h1>
+              <div className="min-h-[180px] md:min-h-[220px]">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentTextIndex}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  >
+                    <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
+                      {heroTexts[currentTextIndex].title}
+                    </h1>
+                    <p className="mt-6 text-lg md:text-xl text-gray-200">
+                      {heroTexts[currentTextIndex].subtitle}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
               
-              <motion.p variants={fadeInUp} className="mt-6 text-lg md:text-xl text-gray-200">
-                From luxury new construction to expert maintenance and lighting, we deliver exceptional results to transform your backyard into a personal oasis.
-              </motion.p>
-              
-              <motion.div variants={fadeInUp} className="mt-10 flex flex-col sm:flex-row gap-4">
+              <motion.div variants={fadeInUp} className="mt-8 flex flex-col sm:flex-row gap-4">
                 <a href="#contact" className="bg-accent-cyan text-white font-bold py-4 px-8 rounded-lg hover:bg-white hover:text-primary-blue transition-all shadow-[0_0_20px_rgba(0,212,255,0.4)] text-center flex items-center justify-center group">
                   Get a Free Estimate <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </a>
