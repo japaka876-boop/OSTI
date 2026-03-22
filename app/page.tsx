@@ -99,16 +99,31 @@ const heroTexts = [
   }
 ];
 
+const whyChooseUsImages = [
+  "/Why-choose-us.avif",
+  "/Why-choose-us1.avif",
+  "/Why-choose-us2.avif",
+  "/Why-choose-us3.avif"
+];
+
 export default function HomePage() {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [currentWhyUsIndex, setCurrentWhyUsIndex] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isFinancingModalOpen, setIsFinancingModalOpen] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const textInterval = setInterval(() => {
       setCurrentTextIndex((prev) => (prev + 1) % heroTexts.length);
-    }, 4500); // Cambia cada 4.5 segundos
-    return () => clearInterval(interval);
+    }, 4500);
+    const whyUsInterval = setInterval(() => {
+      setCurrentWhyUsIndex((prev) => (prev + 1) % whyChooseUsImages.length);
+    }, 4000);
+    
+    return () => {
+      clearInterval(textInterval);
+      clearInterval(whyUsInterval);
+    };
   }, []);
 
   return (
@@ -477,14 +492,26 @@ export default function HomePage() {
                       transition={{ duration: 0.7 }}
                       className="relative w-full h-[500px] lg:h-[700px] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-4 border-white/10"
                     >
-                         <Image 
-                            src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop" 
-                            alt="Stunning modern pool with luxurious amenities in Coachella Valley" 
-                            fill 
-                            sizes="(max-width: 1024px) 100vw, 50vw" 
-                            className="object-cover" 
-                        />
-                        {/* Overlay Badge */}
+                         <AnimatePresence>
+                           <motion.div
+                             key={currentWhyUsIndex}
+                             initial={{ opacity: 0, scale: 1.05 }}
+                             animate={{ opacity: 1, scale: 1 }}
+                             exit={{ opacity: 0 }}
+                             transition={{ duration: 1.2, ease: "easeInOut" }}
+                             className="absolute inset-0"
+                           >
+                              <Image 
+                                 src={whyChooseUsImages[currentWhyUsIndex]} 
+                                 alt="Why Choose Ocean Springs Tech in Coachella Valley" 
+                                 fill 
+                                 sizes="(max-width: 1024px) 100vw, 50vw" 
+                                 className="object-cover" 
+                                 priority
+                             />
+                           </motion.div>
+                         </AnimatePresence>
+                         {/* Overlay Badge */}
                         <div className="absolute bottom-8 right-8 bg-white text-primary-blue p-4 rounded-xl shadow-2xl flex items-center gap-4">
                            <div className="bg-accent-cyan/20 p-3 rounded-full">
                              <Star className="text-accent-cyan fill-accent-cyan h-8 w-8" />
