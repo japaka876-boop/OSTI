@@ -575,7 +575,9 @@ export default function HomePage() {
                     <h3 className="font-heading text-2xl font-bold mb-4 flex items-center gap-2">
                       <Logo /> OSTI
                     </h3>
-                    <p className="text-gray-400 max-w-xs mt-4">Building the backyard oasis of your dreams in Coachella Valley, where luxury meets tranquility.</p>
+                    <p className="text-gray-400 text-sm mt-4 leading-relaxed pr-4">
+                      OSTI has been the gold standard in the Coachella Valley for close to 27 years. Founded on the principles of tenacity, integrity, and unparalleled customer service, OSTI continues to be the first choice of locals throughout the Valley.
+                    </p>
                     <div className="mt-8 flex space-x-5">
                         <a href="#" aria-label="Facebook" className="text-gray-400 hover:text-accent-cyan transition-colors bg-white/5 p-2 rounded-full"><Facebook className="h-5 w-5" /></a>
                         <a href="#" aria-label="Twitter" className="text-gray-400 hover:text-accent-cyan transition-colors bg-white/5 p-2 rounded-full"><Twitter className="h-5 w-5" /></a>
@@ -625,11 +627,27 @@ export default function HomePage() {
                 </div>
             </div>
             
-            <div className="mt-20 pt-8 border-t border-white/10 text-center flex flex-col md:flex-row justify-between items-center gap-4">
-                <p className="text-gray-500 text-sm">&copy; {new Date().getFullYear()} Ocean Springs Tech, Inc. All Rights Reserved.</p>
-                <div className="flex gap-4 text-sm text-gray-500">
-                  <a href="#" className="hover:text-accent-cyan transition-colors">Privacy Policy</a>
-                  <a href="#" className="hover:text-accent-cyan transition-colors">Terms of Service</a>
+            <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
+                {/* Payments & License */}
+                <div className="flex flex-col md:flex-row items-center gap-6">
+                   <div className="flex items-center gap-3">
+                       <span className="text-gray-400 font-medium text-sm mr-2">We Accept:</span>
+                       <div className="bg-white px-3 py-1 rounded text-[#1a1f36] font-black text-xs italic shadow-sm tracking-tighter">VISA</div>
+                       <div className="bg-[#eb001b] px-3 py-1 rounded text-white font-bold text-xs shadow-sm">mastercard</div>
+                       <div className="bg-white px-3 py-1 rounded text-[#ff6000] font-black text-xs shadow-sm tracking-tight border border-gray-200">DISCOVER</div>
+                       <div className="bg-[#007cbc] px-3 py-1 rounded text-white font-bold text-xs shadow-sm">AMEX</div>
+                   </div>
+                   <div className="hidden md:block w-px h-6 bg-white/10"></div>
+                   <div className="text-gray-400 text-sm">Lic. #920435</div>
+                </div>
+                
+                {/* Copyright & Links */}
+                <div className="flex flex-col md:items-end gap-2 text-center md:text-right">
+                    <p className="text-gray-500 text-sm">&copy; {new Date().getFullYear()} Ocean Springs Tech, Inc. All Rights Reserved.</p>
+                    <div className="flex justify-center md:justify-end gap-4 text-xs text-gray-600">
+                      <a href="#" className="hover:text-accent-cyan transition-colors">Privacy Policy</a>
+                      <a href="#" className="hover:text-accent-cyan transition-colors">Terms of Service</a>
+                    </div>
                 </div>
             </div>
         </div>
