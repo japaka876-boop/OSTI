@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin, Star } from 'lucide-react';
+import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin, Star, CreditCard } from 'lucide-react';
 import Logo from '@/components/Logo';
 
 // ... (skipping unchanged code to save space) wait, the tool expects EXACT replacement string.
