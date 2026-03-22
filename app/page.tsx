@@ -493,20 +493,42 @@ export default function HomePage() {
         </section>
       </main>
 
-      {/* LOCATION MAP */}
-      <section className="relative w-full h-[400px] border-t-8 border-accent-cyan">
-        <iframe
-          src="https://maps.google.com/maps?q=65145%20Two%20Bunch%20Palms%20Trail&t=&z=14&ie=UTF8&iwloc=&output=embed"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen={false}
-          loading="lazy"
-          className="grayscale hover:grayscale-0 transition-all duration-1000"
-        ></iframe>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-           <div className="bg-primary-blue/90 text-white px-6 py-3 rounded-xl shadow-2xl backdrop-blur-sm border border-white/20 animate-bounce">
-              <p className="font-bold flex items-center gap-2"><MapPin size={18} className="text-accent-cyan"/> Visit Our Office</p>
+      {/* INLINE FINANCING SECTION */}
+      <section className="py-20 bg-white border-t border-gray-100 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,212,255,0.03),transparent_50%)] pointer-events-none"></div>
+        <div className="container mx-auto px-6 relative z-10">
+           <div className="text-center mb-12">
+              <p className="text-accent-cyan font-semibold tracking-widest uppercase text-sm mb-4 flex items-center justify-center gap-2">
+                 <span className="w-12 h-[1px] bg-accent-cyan"></span> Start your project <span className="w-12 h-[1px] bg-accent-cyan"></span>
+              </p>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-[#0a2540] mb-8 tracking-tight">Financing Now!</h2>
+              <p className="text-gray-500 max-w-3xl mx-auto leading-relaxed text-lg">
+                Don&apos;t let your project stop! With the financing options offered, you can make that dream come true. Whether you want a small plunge pool or a large pool, these financing solutions can help you build the pool of your dreams without breaking the bank.
+              </p>
+           </div>
+
+           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center justify-center max-w-6xl mx-auto">
+              {/* Partner Cards - Typographic Placeholders using Tailwind */}
+              {[
+                { name: 'LYON FINANCIAL', custom: 'font-serif text-[#0a2540] items-center flex gap-2' },
+                { name: 'HFS', postfix: 'Home Improvement Loans', custom: 'font-sans text-orange-600 font-black tracking-tighter text-3xl' },
+                { name: 'VIKING', postfix: 'CAPITAL', custom: 'font-serif text-purple-900 tracking-widest uppercase flex flex-col' },
+                { name: 'LIGHTSTREAM', postfix: 'A Division of SunTrust Bank', custom: 'font-sans font-extrabold italic text-orange-400 flex flex-col' }
+              ].map((partner, i) => (
+                <div key={i} className="bg-gray-50 rounded-xl p-6 h-36 flex flex-col items-center justify-center border border-gray-200 hover:border-accent-cyan hover:shadow-xl transition-all duration-300 group cursor-pointer grayscale hover:grayscale-0 relative overflow-hidden">
+                   <div className="absolute inset-0 bg-gradient-to-br from-accent-cyan/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                   <h3 className={`text-center text-xl relative z-10 ${partner.custom} group-hover:scale-110 transition-transform`}>
+                     {partner.name}
+                     {partner.postfix && <span className="text-[9px] text-gray-400 font-normal tracking-normal mt-1 block uppercase">{partner.postfix}</span>}
+                   </h3>
+                </div>
+              ))}
+           </div>
+           
+           <div className="mt-14 text-center">
+             <button className="bg-gradient-to-r from-primary-blue to-[#0a2540] text-white font-bold py-4 px-12 rounded-full shadow-[0_4px_15px_rgba(10,37,64,0.4)] hover:shadow-[0_8px_30px_rgba(0,212,255,0.5)] hover:-translate-y-1 transition-all text-lg group">
+               Apply for Financing <ArrowRight className="inline ml-2 group-hover:translate-x-1 transition-transform" />
+             </button>
            </div>
         </div>
       </section>
