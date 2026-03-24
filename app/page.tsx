@@ -13,26 +13,31 @@ import Logo from '@/components/Logo';
 const services = [
   {
     image: "/maintenance-services.avif", 
+    video: "/maintenance-services.mp4",
     title: 'Maintenance Services',
     description: 'Keep your pool crystal clear and ready for enjoyment year-round.',
   },
   {
     image: "/New-construction.avif", 
+    video: "/new-construction.mp4",
     title: 'New Construction',
     description: 'Custom-designed pools built to your exact specifications and lifestyle.',
   },
   {
     image: "/Repairs-and-Warranty.avif", 
+    video: "/repairs-warranty.mp4",
     title: 'Repairs & Warranty',
     description: 'Expert repair technicians ensuring your equipment runs flawlessly.',
   },
   {
     image: "/Remodels.avif", 
+    video: "/pool-remodels.mp4",
     title: 'Pool Remodels',
     description: 'Transform your existing pool into a modern oasis of relaxation.',
   },
   {
     image: "/Lighting.avif", 
+    video: "/custom-lighting.mp4",
     title: 'Custom Lighting',
     description: 'Enhance your outdoor living space with stunning night lighting solutions.',
   },
@@ -870,14 +875,24 @@ export default function HomePage() {
             >
               {services.map((service, idx) => (
                 <motion.div key={service.title} variants={fadeInUp} className="relative group rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500 bg-[#0a2540] aspect-[3/4] max-h-[450px] w-full cursor-pointer isolate">
-                  {/* Background Image */}
-                  <Image 
+                  {/* Background Image / Video */}
+                  {/* <Image 
                       src={service.image} 
                       alt={service.title} 
                       fill 
                       sizes="(max-width: 1024px) 100vw, 20vw"
                       className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out opacity-100 group-hover:opacity-40" 
-                  />
+                  /> */}
+                  {service.video && (
+                    <video
+                        src={service.video}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out opacity-100 group-hover:opacity-40"
+                    />
+                  )}
                   {/* Subtle Gradient for Text Readability - Lower Opacity Default */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a2540]/80 via-[#0a2540]/20 to-transparent group-hover:opacity-100 opacity-60 transition-opacity duration-500"></div>
                   <div className="absolute inset-0 bg-gradient-to-tr from-accent-cyan/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
