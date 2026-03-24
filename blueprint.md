@@ -84,3 +84,14 @@ El proyecto ha sido escalado con características de diseño UI/UX de nivel corp
         *   Nivel 1: Tarjetas grandes simulando "Álbumes" o directorios por categoría.
         *   Nivel 2: Grilla *Masonry* elegante de las imágenes del álbum seleccionado con efectos Hover Premium (Zoom y botón expandir).
         *   Nivel 3: **Lightbox**, pantalla completa inmersiva tipo carrusel para navegar imagen a imagen.
+
+## 6. Phase 4: Premium Preloader & Video Services Integration
+
+El sitio ha recibido una actualización de assets y de experiencia de carga inicial para afianzar el sentimiento "Premium".
+
+*   **Status:** **[COMPLETED]**
+*   **Implementation Details:**
+    *   **Services Videos (`app/page.tsx`):** Las imágenes estáticas de la sección "Our Services" fueron reemplazadas por videos `*.mp4` (Maintenance, New Construction, Repairs, Remodels, Lighting). Se renderizan usando la etiqueta `<video>` con `autoPlay`, `loop` y `muted`, respetando y manteniendo los mismos efectos CSS preexistentes de hover y escala.
+    *   **Animated Preloader (`components/Preloader.tsx`):** Se diseñó un componente 100% código (React, Tailwind, Framer Motion) inyectado al nivel más alto de `app/page.tsx`.
+        *   Presenta un efecto visual ultra-realista que simula un "aro de agua" brillante mediante la composición de múltiples div con sombreado dinámico (`box-shadow`, `blur`) y un video base de fondo opacado.
+        *   La interfaz de carga congela la pantalla temporalmente durante 2.5 segundos (mientras los assets pesados se inicializan en el DOM) y muestra el texto pulsante "LOADING YOUR RELAXATION EXPERIENCE...", antes de desvanecerse fluidamente de regreso a la interfaz normal, creando un efecto de inicio de aplicación de lujo.
