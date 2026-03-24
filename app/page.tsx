@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
 import { Check, ArrowRight, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Users, Truck, Gem, MapPin, Star, CreditCard, Menu, X, CheckCircle, CheckCircle2, Maximize2, Folder, ChevronLeft, ChevronRight } from 'lucide-react';
 import Logo from '@/components/Logo';
+import Preloader from '@/components/Preloader';
 
 // ... (skipping unchanged code to save space) wait, the tool expects EXACT replacement string.
 // Let me use a multi_replace instead or just copy the exact block.
@@ -151,6 +152,7 @@ export default function HomePage() {
 
   return (
     <div className="bg-white text-dark-gray font-sans overflow-x-hidden">
+      <Preloader />
       {/* PREMIUM HEADER */}
       <header className="fixed top-0 left-0 right-0 z-[100] flex flex-col w-full shadow-sm">
         {/* Top Info Bar - Sleek & Thin */}
