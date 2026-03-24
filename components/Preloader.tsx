@@ -106,7 +106,7 @@ export default function Preloader() {
             className="relative z-10 flex flex-col items-center"
           >
              <p className="text-sm md:text-lg font-medium tracking-[0.15em] text-white/90 uppercase text-center">
-               Cargando tu experiencia de relajación<span className="animate-[ping_1.5s_infinite] inline-block w-1.5 h-1.5 bg-[#00d4ff] rounded-full mx-0.5" /><span className="animate-[ping_1.5s_1s_infinite] inline-block w-1.5 h-1.5 bg-[#00d4ff] rounded-full mx-0.5" /><span className="animate-[ping_1.5s_2s_infinite] inline-block w-1.5 h-1.5 bg-[#00d4ff] rounded-full mx-0.5" />
+               Loading your relaxation experience<span className="animate-[ping_1.5s_infinite] inline-block w-1.5 h-1.5 bg-[#00d4ff] rounded-full mx-0.5" /><span className="animate-[ping_1.5s_1s_infinite] inline-block w-1.5 h-1.5 bg-[#00d4ff] rounded-full mx-0.5" /><span className="animate-[ping_1.5s_2s_infinite] inline-block w-1.5 h-1.5 bg-[#00d4ff] rounded-full mx-0.5" />
              </p>
           </motion.div>
         </motion.div>
