@@ -5,7 +5,8 @@ echo =======================================================
 echo Configurando el usuario de Git por si acaso...
 echo =======================================================
 git config user.email "itadmin@oceanspringstech.com"
-git config user.name "@Desert2025!"
+git config user.name "Ocean Springs Admin"
+git config credential.helper store
 
 echo.
 echo =======================================================
@@ -54,7 +55,11 @@ if not "%user_input%"=="" set "msg=%user_input%"
 git commit -m "%msg%"
 
 echo.
-echo [Paso 4] Enviando a Github...
+echo [Paso 4] Sincronizando con el servidor antes de subir...
+git pull origin main
+
+echo.
+echo [Paso 5] Enviando cambios a GitHub...
 git push origin main
 
 echo.

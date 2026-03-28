@@ -94,4 +94,16 @@ El sitio ha recibido una actualización de assets y de experiencia de carga inic
     *   **Services Videos (`app/page.tsx`):** Las imágenes estáticas de la sección "Our Services" fueron reemplazadas por videos `*.mp4` (Maintenance, New Construction, Repairs, Remodels, Lighting). Se renderizan usando la etiqueta `<video>` con `autoPlay`, `loop` y `muted`, respetando y manteniendo los mismos efectos CSS preexistentes de hover y escala.
     *   **Animated Preloader (`components/Preloader.tsx`):** Se diseñó un componente 100% código (React, Tailwind, Framer Motion) inyectado al nivel más alto de `app/page.tsx`.
         *   Presenta un efecto visual ultra-realista que simula un "aro de agua" brillante mediante la composición de múltiples div con sombreado dinámico (`box-shadow`, `blur`) y un video base de fondo opacado.
-        *   La interfaz de carga congela la pantalla temporalmente durante 2.5 segundos (mientras los assets pesados se inicializan en el DOM) y muestra el texto pulsante "LOADING YOUR RELAXATION EXPERIENCE...", antes de desvanecerse fluidamente de regreso a la interfaz normal, creando un efecto de inicio de aplicación de lujo.
+
+## 7. Fase 5: Conexión a GitHub y Automatización de Cambios
+
+El proyecto ha sido vinculado profesionalmente a un repositorio remoto en GitHub para garantizar el control de versiones, la colaboración y el respaldo seguro del código.
+
+*   **Estado:** **[COMPLETADO]**
+*   **Detalles de la Implementación:**
+    *   **Repositorio Remoto:** Vinculado a `https://github.com/OCEANSPRINGS/ocean-springs-web.git`.
+    *   **Scripts de Automatización (.bat):** Se han desarrollado y optimizado tres herramientas para facilitar el flujo de trabajo desde la terminal de Windows:
+        1.  **`conectar_github.bat`**: Configura la conexión inicial, establece las credenciales de usuario (`itadmin@oceanspringstech.com`) y activa el asistente de almacenamiento de contraseñas (`credential.helper store`).
+        2.  **`subir_cambios.bat`**: Un script robusto que realiza una limpieza automática (`lint`), añade archivos, solicita un mensaje para el commit, sincroniza con el servidor (pull) para evitar conflictos y finalmente sube los cambios (push) a la rama `main`.
+        3.  **`bajar_cambios.bat`**: Permite descargar las últimas actualizaciones del servidor con un solo clic, incluyendo la reinstalación automática de dependencias si hay cambios en el proyecto.
+    *   **Seguridad:** Se configuró el entorno para recordar las credenciales localmente de forma segura, evitando tener que escribirlas en cada operación.
